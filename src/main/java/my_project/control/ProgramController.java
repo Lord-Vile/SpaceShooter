@@ -81,6 +81,6 @@ public class ProgramController {
             viewController.showScene(currentScene);
             SoundController.stopSound("startBGM");
         }
-
     }
 }
+//suiuiuiuiuiui
