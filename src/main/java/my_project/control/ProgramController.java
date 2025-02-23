@@ -51,6 +51,7 @@ public class ProgramController {
         // Ton
         viewController.getSoundController().loadSound("src/main/resources/sound/bgm_startScreen.mp3","startBGM", true);
         SoundController.playSound("startBGM");
+        viewController.getSoundController().loadSound("src/main/resources/sound/bgm_level_A.mp3","startLevelA", true);
         // Bild
         StartBackground sback = new StartBackground();
         viewController.draw(sback,0);
@@ -72,7 +73,6 @@ public class ProgramController {
      * @param dt Zeit seit letztem Frame in Sekunden
      */
     public void updateProgram(double dt){
-
     }
 
     public void processKeyboardInput(int keyCode) {
@@ -80,6 +80,7 @@ public class ProgramController {
             currentScene = 1;
             viewController.showScene(currentScene);
             SoundController.stopSound("startBGM");
+            SoundController.playSound("startLevelA");
         }
     }
 }
