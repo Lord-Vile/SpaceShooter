@@ -51,7 +51,6 @@ public class ProgramController {
         // Ton
         viewController.getSoundController().loadSound("src/main/resources/sound/bgm_startScreen.mp3","startBGM", true);
         SoundController.playSound("startBGM");
-        viewController.getSoundController().loadSound("src/main/resources/sound/bgm_level_A.mp3","startLevelA", true);
         // Bild
         StartBackground sback = new StartBackground();
         viewController.draw(sback,0);
@@ -61,7 +60,9 @@ public class ProgramController {
         viewController.register(inputManager,0);
 
         // Spielbildschirm (Szene 1)
+        viewController.getSoundController().loadSound("src/main/resources/sound/bgm_level_A.mp3","startLevelA", true);
         viewController.createScene();
+        viewController.draw(sback,1);
         p1 = new Player(50,300);
         viewController.draw(p1,1);
 
@@ -73,6 +74,7 @@ public class ProgramController {
      * @param dt Zeit seit letztem Frame in Sekunden
      */
     public void updateProgram(double dt){
+
     }
 
     public void processKeyboardInput(int keyCode) {
@@ -84,4 +86,3 @@ public class ProgramController {
         }
     }
 }
-//suiuiuiuiuiui
