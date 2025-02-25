@@ -61,6 +61,7 @@ public class ProgramController {
 
         // Spielbildschirm (Szene 1)
         viewController.getSoundController().loadSound("src/main/resources/sound/bgm_level_A.mp3","startLevelA", true);
+        viewController.getSoundController().loadSound("src/main/resources/sound/whoosh.mp3","whoosh", false);
         viewController.createScene();
         viewController.draw(sback,1);
         p1 = new Player(50,300);
@@ -83,6 +84,7 @@ public class ProgramController {
             viewController.showScene(currentScene);
             SoundController.stopSound("startBGM");
             SoundController.playSound("startLevelA");
+            SoundController.playSound("whoosh");
         }
     }
 }
