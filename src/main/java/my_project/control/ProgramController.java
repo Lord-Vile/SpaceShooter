@@ -54,6 +54,7 @@ public class ProgramController {
         // Bild
         StartBackground sback = new StartBackground();
         viewController.draw(sback,0);
+
         Picture titleText = new Picture(100, 200, "src/main/resources/graphic/title_text.png");
         viewController.draw(titleText,0);
         // Interaktion
@@ -66,6 +67,7 @@ public class ProgramController {
         viewController.draw(sback,1);
         p1 = new Player(50,300);
         viewController.draw(p1,1);
+        viewController.register(p1,1);
 
         // Endbildschirm (Szene 2)
     }
@@ -85,6 +87,10 @@ public class ProgramController {
             SoundController.stopSound("startBGM");
             SoundController.playSound("startLevelA");
             SoundController.playSound("whoosh");
+        }
+
+        if (keyCode == KeyEvent.VK_ESCAPE) {
+            System.exit(0);
         }
     }
 }
