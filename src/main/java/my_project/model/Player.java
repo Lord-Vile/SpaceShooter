@@ -39,37 +39,51 @@ public class Player extends InteractiveGraphicalObject {
         }
 
         if (direction == 1){
-            this.y += 100;
+            this.y += 100*dt;
         }
         if (direction == 2) {
-            this.x += 100;
+            this.x += 100*dt;
         }
         if (direction == 3) {
-            this.y -= 100;
+            this.y -= 100*dt;
         }
         if (direction == 4) {
-            this.x -= 100;
+            this.x -= 100*dt;
         }
     }
 
     @Override
     public void keyPressed(int keyCode){
         if (keyCode == KeyEvent.VK_W){
-            direction = 1;
-            System.out.println(1);
-        }
-        if (keyCode == KeyEvent.VK_S){
             direction = 3;
         }
+        if (keyCode == KeyEvent.VK_S){
+            direction = 1;
+        }
         if (keyCode == KeyEvent.VK_A){
-            direction = 2;
+            direction = 4;
         }
         if (keyCode == KeyEvent.VK_D) {
-            direction = 4;
+            direction = 2;
         }
 
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
+        }
+    }
+
+    public void keyReleased(int keyCode){
+        if (keyCode == KeyEvent.VK_W){
+            direction = 0;
+        }
+        if (keyCode == KeyEvent.VK_S){
+            direction = 0;
+        }
+        if (keyCode == KeyEvent.VK_A){
+            direction = 0;
+        }
+        if (keyCode == KeyEvent.VK_D){
+            direction = 0;
         }
     }
 
