@@ -65,7 +65,7 @@ public class ProgramController {
         viewController.getSoundController().loadSound("src/main/resources/sound/whoosh.mp3","whoosh", false);
         viewController.createScene();
         viewController.draw(sback,1);
-        p1 = new Player(50,300);
+        p1 = new Player();
         viewController.draw(p1,1);
         viewController.register(p1,1);
 
