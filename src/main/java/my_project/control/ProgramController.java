@@ -5,6 +5,8 @@ import KAGO_framework.control.ViewController;
 import my_project.model.Picture;
 import my_project.model.Player;
 import my_project.model.StartBackground;
+import my_project.model.Laser;
+import my_project.model.Enemies;
 import my_project.view.InputManager;
 
 import java.awt.event.KeyEvent;
@@ -25,6 +27,8 @@ public class ProgramController {
     // Referenzen
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Player p1;
+    private Laser l1;
+    private Enemies e1;
     private int currentScene;
 
     /**
@@ -61,13 +65,20 @@ public class ProgramController {
         viewController.register(inputManager,0);
 
         // Spielbildschirm (Szene 1)
-        viewController.getSoundController().loadSound("src/main/resources/sound/bgm_level_A.mp3","startLevelA", true);
+        viewController.getSoundController().loadSound("src/main/resources/sound/GUILES THEMES1.mp3","startLevelA", true);
         viewController.getSoundController().loadSound("src/main/resources/sound/whoosh.mp3","whoosh", false);
         viewController.createScene();
         viewController.draw(sback,1);
+        l1 = new Laser();
+        viewController.draw(l1,1);
+        viewController.register(l1,1);
         p1 = new Player();
         viewController.draw(p1,1);
         viewController.register(p1,1);
+        e1 = new Enemies();
+        viewController.draw(e1,1);
+        viewController.register(e1,1);
+
 
         // Endbildschirm (Szene 2)
     }

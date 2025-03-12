@@ -11,15 +11,9 @@ public class Player extends InteractiveGraphicalObject {
 
     private double hoverY;
     private boolean hoverUp;
-    int direction = 0;
+    public int direction = 0;
     public double x = 50;
-    public double y = 300;
-
-    double playerCooldown = 3;
-    double startPlayerCooldown = 3;
-    double lx = x;
-    double ly = y;
-    boolean shoot = false;
+    public double y = 350;
 
 
     public Player(){
@@ -29,8 +23,6 @@ public class Player extends InteractiveGraphicalObject {
 
     @Override
     public void draw(DrawTool drawTool) {
-        drawTool.drawFilledRectangle(lx + 10, ly + 25, 20, 10);
-
         drawTool.drawImage(getMyImage(),x,y+hoverY);
     }
 
@@ -58,17 +50,6 @@ public class Player extends InteractiveGraphicalObject {
         }
         if (direction == 4) {
             this.x -= 100*dt;
-        }
-
-        playerCooldown -= dt;
-
-        if (playerCooldown <= 0){
-            playerCooldown = startPlayerCooldown;
-            shoot = true;
-        }
-
-        if (shoot == true){
-            lx += 500*dt;
         }
     }
 
@@ -106,5 +87,4 @@ public class Player extends InteractiveGraphicalObject {
             direction = 0;
         }
     }
-
 }
