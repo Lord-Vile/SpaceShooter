@@ -3,6 +3,7 @@ package my_project.model;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
+import my_project.Config;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -15,9 +16,9 @@ public class Laser extends InteractiveGraphicalObject {
     public double y = 350;
     private int direction;
 
-    double playerCooldown = 3;
+    double playerCooldown = 1;
     double shots = 0;
-    double startPlayerCooldown = 3;
+    double startPlayerCooldown = 1;
 
     double lx = x;
     double ly = y;
@@ -95,26 +96,56 @@ public class Laser extends InteractiveGraphicalObject {
         }
 
         if (shoot){
-            x += 500*dt;
+            lx += 500*dt;
         }
         if (shoot1){
-            x += 500*dt;
+            lx1 += 500*dt;
         }
         if (shoot2){
-            x += 500*dt;
+            lx2 += 500*dt;
         }
         if (shoot3){
-            x += 500*dt;
+            lx3 += 500*dt;
         }
         if (shoot4){
-            x += 500*dt;
+            lx4 += 500*dt;
         }
         if (shoot5){
-            x += 500*dt;
+            lx5 += 500*dt;
         }
         if (shoot6){
-            x += 500*dt;
+            lx6 += 500*dt;
         }
+
+        if (lx > Config.WINDOW_WIDTH){
+            lx = x;
+            shoot = false;
+        }
+        if (lx1 > Config.WINDOW_WIDTH){
+            lx1 = x;
+            shoot1 = false;
+        }
+        if (lx2 > Config.WINDOW_WIDTH){
+            lx2 = x;
+            shoot2 = false;
+        }
+        if (lx3 > Config.WINDOW_WIDTH){
+            lx3 = x;
+            shoot3 = false;
+        }
+        if (lx4 > Config.WINDOW_WIDTH){
+            lx4 = x;
+            shoot4 = false;
+        }
+        if (lx5 > Config.WINDOW_WIDTH){
+            lx5 = x;
+            shoot5 = false;
+        }
+        if (lx6 > Config.WINDOW_WIDTH){
+            lx6 = x;
+            shoot6 = false;
+        }
+
     }
     @Override
     public void keyPressed(int keyCode){

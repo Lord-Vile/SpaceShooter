@@ -19,6 +19,7 @@ public class Player extends InteractiveGraphicalObject {
     public Player(){
         this.setNewImage("src/main/resources/graphic/spaceship.png");
         hoverUp = true;
+
     }
 
     @Override
