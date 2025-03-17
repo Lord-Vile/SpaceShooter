@@ -51,13 +51,27 @@ public class Laser extends InteractiveGraphicalObject {
 
     @Override
     public void draw(DrawTool drawTool) {
-        drawTool.drawFilledRectangle(lx + 10, ly + 25, 20, 10);
-        drawTool.drawFilledRectangle(lx1 + 10, ly1 + 25, 20, 10);
+        if (shoot) {
+            drawTool.drawFilledRectangle(lx + 10, ly + 25, 20, 10);
+        }
+        if (shoot1) {
+            drawTool.drawFilledRectangle(lx1 + 10, ly1 + 25, 20, 10);
+        }
+        if (shoot2) {
         drawTool.drawFilledRectangle(lx2 + 10, ly2 + 25, 20, 10);
+        }
+        if (shoot3) {
         drawTool.drawFilledRectangle(lx3 + 10, ly3 + 25, 20, 10);
+        }
+        if (shoot4) {
         drawTool.drawFilledRectangle(lx4 + 10, ly4 + 25, 20, 10);
+        }
+        if (shoot5) {
         drawTool.drawFilledRectangle(lx5 + 10, ly5 + 25, 20, 10);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 25, 20, 10);
+        }
+        if (shoot6) {
+            drawTool.drawFilledRectangle(lx6 + 10, ly6 + 25, 20, 10);
+        }
     }
 
     @Override
@@ -118,32 +132,68 @@ public class Laser extends InteractiveGraphicalObject {
         }
 
         if (lx > Config.WINDOW_WIDTH){
-            lx = x;
+            lx = Player.x;
+            ly = Player.y;
             shoot = false;
         }
         if (lx1 > Config.WINDOW_WIDTH){
-            lx1 = x;
+            lx1 = Player.x;
+            ly1 = Player.y;
             shoot1 = false;
         }
         if (lx2 > Config.WINDOW_WIDTH){
-            lx2 = x;
+            lx2 = Player.x;
+            ly2 = Player.y;
             shoot2 = false;
         }
         if (lx3 > Config.WINDOW_WIDTH){
-            lx3 = x;
+            lx3 = Player.x;
+            ly3 = Player.y;
             shoot3 = false;
         }
         if (lx4 > Config.WINDOW_WIDTH){
             lx4 = x;
+            ly4 = Player.y;
             shoot4 = false;
         }
         if (lx5 > Config.WINDOW_WIDTH){
-            lx5 = x;
+            lx5 = Player.x;
+            ly5 = Player.y;
             shoot5 = false;
         }
         if (lx6 > Config.WINDOW_WIDTH){
-            lx6 = x;
+            lx6 = Player.x;
+            ly6 = Player.y;
             shoot6 = false;
+        }
+
+        if (shoot == false){
+            lx = Player.x;
+            ly = Player.y;
+        }
+        if (shoot1 == false){
+            lx1 = Player.x;
+            ly1 = Player.y;
+        }
+        if (shoot2 == false){
+            lx2 = Player.x;
+            ly2 = Player.y;
+        }
+        if (shoot3 == false){
+            lx3 = Player.x;
+            ly3 = Player.y;
+        }
+        if (shoot4 == false){
+            lx4 = Player.x;
+            ly4 = Player.y;
+        }
+        if (shoot5 == false){
+            lx5 = Player.x;
+            ly5 = Player.y;
+        }
+        if (shoot6 == false){
+            lx6 = Player.x;
+            ly6 = Player.y;
         }
 
     }

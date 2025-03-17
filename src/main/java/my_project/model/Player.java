@@ -12,8 +12,9 @@ public class Player extends InteractiveGraphicalObject {
     private double hoverY;
     private boolean hoverUp;
     public int direction = 0;
-    public double x = 50;
-    public double y = 350;
+    public static double x = 50;
+    public static double y = 350;
+    private double speed = 150;
 
 
     public Player(){
@@ -41,16 +42,16 @@ public class Player extends InteractiveGraphicalObject {
         }
 
         if (direction == 1){
-            this.y += 100*dt;
+            this.y += speed*dt;
         }
         if (direction == 2) {
-            this.x += 100*dt;
+            this.x += speed*dt;
         }
         if (direction == 3) {
-            this.y -= 100*dt;
+            this.y -= speed*dt;
         }
         if (direction == 4) {
-            this.x -= 100*dt;
+            this.x -= speed*dt;
         }
     }
 
