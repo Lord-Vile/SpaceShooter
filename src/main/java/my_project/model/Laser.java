@@ -21,7 +21,7 @@ public class Laser extends InteractiveGraphicalObject {
     double startPlayerCooldown = 1;
 
     double lx = x;
-    double ly = y;
+    public double ly = y;
     double lx1 = x;
     double ly1 = y;
     double lx2 = x;
@@ -196,6 +196,8 @@ public class Laser extends InteractiveGraphicalObject {
             ly6 = Player.y;
         }
 
+        checkAndHandleCollision();
+
     }
     @Override
     public void keyPressed(int keyCode){
@@ -227,6 +229,14 @@ public class Laser extends InteractiveGraphicalObject {
         if (keyCode == KeyEvent.VK_D){
             direction = 0;
         }
+    }
+
+    public boolean checkAndHandleCollision() {
+        if (lx >= Enemies.x && lx <= Enemies.x + 100 && ly >= Enemies.y && ly <= Enemies.y + 100) {
+            Enemies.hp = 0;
+            shoot = false;
+        }
+        return false;
     }
 
 }

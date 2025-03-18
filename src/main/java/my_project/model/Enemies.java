@@ -11,6 +11,9 @@ public class Enemies extends InteractiveGraphicalObject {
     private double hoverY;
     private boolean hoverUp;
     private int scene = 1;
+    public static double hp = 100;
+    public static double x = 700;
+    public static double y = 350;
 
     public Enemies(){
         this.setNewImage("src/main/resources/graphic/gegner.png");
@@ -20,9 +23,9 @@ public class Enemies extends InteractiveGraphicalObject {
     @Override
     public void draw(DrawTool drawTool) {
         if (scene == 1) {
-            drawTool.drawImage(getMyImage(), 700, 240 + hoverY);
-            drawTool.drawImage(getMyImage(), 700, 350 + hoverY);
-            drawTool.drawImage(getMyImage(), 700, 460 + hoverY);
+            if (hp > 0) {
+                drawTool.drawImage(getMyImage(), this.x, y + hoverY);
+            }
         }
     }
 
@@ -36,5 +39,4 @@ public class Enemies extends InteractiveGraphicalObject {
             if (hoverY > 5) hoverUp = true;
         }
     }
-
 }
