@@ -14,7 +14,7 @@ public class Player extends InteractiveGraphicalObject {
     public int direction = 0;
     public static double x = 50;
     public static double y = 350;
-    private double speed = 150;
+    private double speed = 300;
 
 
     public Player(){

@@ -235,6 +235,24 @@ public class Laser extends InteractiveGraphicalObject {
         if (lx >= Enemies.x && lx <= Enemies.x + 100 && ly >= Enemies.y && ly <= Enemies.y + 100) {
             Enemies.hp = 0;
             shoot = false;
+        }else if (lx1 >= Enemies.x && lx1 <= Enemies.x + 100 && ly1 >= Enemies.y && ly1 <= Enemies.y + 100) {
+            Enemies.hp = 0;
+            shoot1 = false;
+        }else if (lx2 >= Enemies.x && lx2 <= Enemies.x + 100 && ly2 >= Enemies.y && ly2 <= Enemies.y + 100) {
+            Enemies.hp = 0;
+            shoot2 = false;
+        }else if (lx3 >= Enemies.x && lx3 <= Enemies.x + 100 && ly3 >= Enemies.y && ly3 <= Enemies.y + 100) {
+            Enemies.hp = 0;
+            shoot3 = false;
+        }else if (lx4 >= Enemies.x && lx4 <= Enemies.x + 100 && ly4 >= Enemies.y && ly4 <= Enemies.y + 100) {
+            Enemies.hp = 0;
+            shoot4 = false;
+        }else if (lx5 >= Enemies.x && lx5 <= Enemies.x + 100 && ly5 >= Enemies.y && ly5 <= Enemies.y + 100) {
+            Enemies.hp = 0;
+            shoot5 = false;
+        }else if (lx6 >= Enemies.x && lx6 <= Enemies.x + 100 && ly6 >= Enemies.y && ly6 <= Enemies.y + 100) {
+            Enemies.hp = 0;
+            shoot6 = false;
         }
         return false;
     }

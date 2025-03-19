@@ -2,11 +2,7 @@ package my_project.control;
 
 import KAGO_framework.control.SoundController;
 import KAGO_framework.control.ViewController;
-import my_project.model.Picture;
-import my_project.model.Player;
-import my_project.model.StartBackground;
-import my_project.model.Laser;
-import my_project.model.Enemies;
+import my_project.model.*;
 import my_project.view.InputManager;
 
 import java.awt.event.KeyEvent;
@@ -30,6 +26,7 @@ public class ProgramController {
     private Laser l1;
     private Enemies e1;
     private int currentScene;
+    Enemies[] enemies;
 
     /**
      * Konstruktor
@@ -75,7 +72,8 @@ public class ProgramController {
         p1 = new Player();
         viewController.draw(p1,1);
         viewController.register(p1,1);
-        e1 = new Enemies();
+
+        e1 = new Enemies(350);
         viewController.draw(e1,1);
         viewController.register(e1,1);
 
