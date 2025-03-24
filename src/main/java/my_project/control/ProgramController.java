@@ -24,7 +24,7 @@ public class ProgramController {
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Player p1;
     private Laser l1;
-    private Enemies e1;
+    private Enemies[] e1;
     private int currentScene;
     Enemies[] enemies;
 
@@ -73,9 +73,24 @@ public class ProgramController {
         viewController.draw(p1,1);
         viewController.register(p1,1);
 
-        e1 = new Enemies(350);
-        viewController.draw(e1,1);
-        viewController.register(e1,1);
+        this.e1 = new Enemies[5];
+
+        e1[0] = new Enemies(100);
+        e1[1] = new Enemies(200);
+        e1[2] = new Enemies(300);
+        e1[3] = new Enemies(400);
+        e1[4] = new Enemies(500);
+
+        viewController.draw(e1[0],1);
+        viewController.draw(e1[1],1);
+        viewController.draw(e1[2],1);
+        viewController.draw(e1[3],1);
+        viewController.draw(e1[4],1);
+        viewController.register(e1[0],1);
+        viewController.register(e1[1],1);
+        viewController.register(e1[2],1);
+        viewController.register(e1[3],1);
+        viewController.register(e1[4],1);
 
 
         // Endbildschirm (Szene 2)

@@ -13,7 +13,7 @@ public class Enemies extends InteractiveGraphicalObject {
     private int level = 1;
     public static double hp = 100;
     public static double x = 700;
-    public static double y = 0;
+    public static double y;
 
     public Enemies(int y){
         this.setNewImage("src/main/resources/graphic/gegner.png");
@@ -25,7 +25,7 @@ public class Enemies extends InteractiveGraphicalObject {
     public void draw(DrawTool drawTool) {
         if (level == 1) {
             if (hp > 0) {
-                drawTool.drawImage(getMyImage(), this.x, y + hoverY);
+                drawTool.drawImage(getMyImage(), this.x, this.y + hoverY);
             }
         }
     }
