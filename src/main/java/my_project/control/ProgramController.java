@@ -25,6 +25,7 @@ public class ProgramController {
     private Player p1;
     private Laser l1;
     private Enemies[] e1;
+    private EnemyLaser el1;
     private int currentScene;
     Enemies[] enemies;
 
@@ -73,26 +74,17 @@ public class ProgramController {
         viewController.draw(p1,1);
         viewController.register(p1,1);
 
+        el1 = new EnemyLaser();
+        viewController.draw(el1,1);
+        viewController.register(el1,1);
+
         this.e1 = new Enemies[5];
 
-        e1[0] = new Enemies(100);
-        e1[1] = new Enemies(200);
-        e1[2] = new Enemies(300);
-        e1[3] = new Enemies(400);
-        e1[4] = new Enemies(500);
-
-        viewController.draw(e1[0],1);
-        viewController.draw(e1[1],1);
-        viewController.draw(e1[2],1);
-        viewController.draw(e1[3],1);
-        viewController.draw(e1[4],1);
-        viewController.register(e1[0],1);
-        viewController.register(e1[1],1);
-        viewController.register(e1[2],1);
-        viewController.register(e1[3],1);
-        viewController.register(e1[4],1);
-
-
+        for (int i = 0; i < 5; i++) {
+            e1[i] = new Enemies(100*i + 100);
+            viewController.draw(e1[i],1);
+            viewController.register(e1[i],1);
+        }
         // Endbildschirm (Szene 2)
     }
 
@@ -100,8 +92,12 @@ public class ProgramController {
      * Diese Methode wird vom ViewController-Objekt automatisch mit jedem Frame aufgerufen (ca. 60mal pro Sekunde)
      * @param dt Zeit seit letztem Frame in Sekunden
      */
-    public void updateProgram(double dt){
 
+    public void updateProgram(double dt) {
+        if(l1.collidesWith(e1[1])) {
+            currentScene = 0;
+            viewController.showScene(currentScene);
+        }
     }
 
     public void processKeyboardInput(int keyCode) {
@@ -117,5 +113,4 @@ public class ProgramController {
             System.exit(0);
         }
     }
-
 }

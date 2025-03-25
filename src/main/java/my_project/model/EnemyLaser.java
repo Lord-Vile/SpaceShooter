@@ -1,14 +1,10 @@
 package my_project.model;
 
-import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
 import my_project.Config;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-
-public class Laser extends InteractiveGraphicalObject {
+public class EnemyLaser extends InteractiveGraphicalObject {
 
     private double hoverY;
     private boolean hoverUp;
@@ -16,9 +12,9 @@ public class Laser extends InteractiveGraphicalObject {
     public double y = 350;
     private int direction;
 
-    double playerCooldown = 1;
+    double LaserCooldown = 1;
     double shots = 0;
-    double startPlayerCooldown = 1;
+    double startLaserCooldown = 1;
 
     double lx = x;
     public double ly = y;
@@ -45,7 +41,7 @@ public class Laser extends InteractiveGraphicalObject {
 
 
 
-    public Laser(){
+    public EnemyLaser(){
         hoverUp = true;
     }
 
@@ -77,154 +73,123 @@ public class Laser extends InteractiveGraphicalObject {
     @Override
     public void update(double dt){
 
-        playerCooldown -= dt;
+        LaserCooldown -= dt;
 
-        if (playerCooldown <= 0 && shots == 0){
+        if (LaserCooldown <= 0 && shots == 0){
             shoot = true;
             shots = 1;
-            playerCooldown = startPlayerCooldown;
-        } else if (playerCooldown <= 0 && shots == 1){
+            LaserCooldown = startLaserCooldown;
+        } else if (LaserCooldown <= 0 && shots == 1){
             shoot1 = true;
             shots = 2;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 2){
+            LaserCooldown = startLaserCooldown;
+        }else if (LaserCooldown <= 0 && shots == 2){
             shoot2 = true;
             shots = 3;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 3){
+            LaserCooldown = startLaserCooldown;
+        }else if (LaserCooldown <= 0 && shots == 3){
             shoot3 = true;
             shots = 4;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 4){
+            LaserCooldown = startLaserCooldown;
+        }else if (LaserCooldown <= 0 && shots == 4){
             shoot4 = true;
             shots = 5;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 5){
+            LaserCooldown = startLaserCooldown;
+        }else if (LaserCooldown <= 0 && shots == 5){
             shoot5 = true;
             shots = 6;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 6){
+            LaserCooldown = startLaserCooldown;
+        }else if (LaserCooldown <= 0 && shots == 6){
             shoot6 = true;
             shots = 0;
-            playerCooldown = startPlayerCooldown;
+            LaserCooldown = startLaserCooldown;
         }
 
         if (shoot){
-            lx += 500*dt;
+            lx -= 500*dt;
         }
         if (shoot1){
-            lx1 += 500*dt;
+            lx1 -= 500*dt;
         }
         if (shoot2){
-            lx2 += 500*dt;
+            lx2 -= 500*dt;
         }
         if (shoot3){
-            lx3 += 500*dt;
+            lx3 -= 500*dt;
         }
         if (shoot4){
-            lx4 += 500*dt;
+            lx4 -= 500*dt;
         }
         if (shoot5){
-            lx5 += 500*dt;
+            lx5 -= 500*dt;
         }
         if (shoot6){
-            lx6 += 500*dt;
+            lx6 -= 500*dt;
         }
 
         if (lx > Config.WINDOW_WIDTH){
-            lx = Player.x;
-            ly = Player.y;
+            lx = Enemies.x;
+            ly = Enemies.y;
             shoot = false;
         }
         if (lx1 > Config.WINDOW_WIDTH){
-            lx1 = Player.x;
-            ly1 = Player.y;
+            lx1 = Enemies.x;
+            ly1 = Enemies.y;
             shoot1 = false;
         }
         if (lx2 > Config.WINDOW_WIDTH){
-            lx2 = Player.x;
-            ly2 = Player.y;
+            lx2 = Enemies.x;
+            ly2 = Enemies.y;
             shoot2 = false;
         }
         if (lx3 > Config.WINDOW_WIDTH){
-            lx3 = Player.x;
-            ly3 = Player.y;
+            lx3 = Enemies.x;
+            ly3 = Enemies.y;
             shoot3 = false;
         }
         if (lx4 > Config.WINDOW_WIDTH){
-            lx4 = Player.x;
-            ly4 = Player.y;
+            lx4 = Enemies.x;
+            ly4 = Enemies.y;
             shoot4 = false;
         }
         if (lx5 > Config.WINDOW_WIDTH){
-            lx5 = Player.x;
-            ly5 = Player.y;
+            lx5 = Enemies.x;
+            ly5 = Enemies.y;
             shoot5 = false;
         }
         if (lx6 > Config.WINDOW_WIDTH){
-            lx6 = Player.x;
-            ly6 = Player.y;
+            lx6 = Enemies.x;
+            ly6 = Enemies.y;
             shoot6 = false;
         }
 
         if (shoot == false){
-            lx = Player.x;
-            ly = Player.y;
+            lx = Enemies.x;
+            ly = Enemies.y;
         }
         if (shoot1 == false){
-            lx1 = Player.x;
-            ly1 = Player.y;
+            lx1 = Enemies.x;
+            ly1 = Enemies.y;
         }
         if (shoot2 == false){
-            lx2 = Player.x;
-            ly2 = Player.y;
+            lx2 = Enemies.x;
+            ly2 = Enemies.y;
         }
         if (shoot3 == false){
-            lx3 = Player.x;
-            ly3 = Player.y;
+            lx3 = Enemies.x;
+            ly3 = Enemies.y;
         }
         if (shoot4 == false){
-            lx4 = Player.x;
-            ly4 = Player.y;
+            lx4 = Enemies.x;
+            ly4 = Enemies.y;
         }
         if (shoot5 == false){
-            lx5 = Player.x;
-            ly5 = Player.y;
+            lx5 = Enemies.x;
+            ly5 = Enemies.y;
         }
         if (shoot6 == false){
-            lx6 = Player.x;
-            ly6 = Player.y;
-        }
-    }
-    @Override
-    public void keyPressed(int keyCode){
-        if (keyCode == KeyEvent.VK_W){
-            direction = 3;
-        }
-        if (keyCode == KeyEvent.VK_S){
-            direction = 1;
-        }
-        if (keyCode == KeyEvent.VK_A){
-            direction = 4;
-        }
-        if (keyCode == KeyEvent.VK_D) {
-            direction = 2;
-        }
-
-    }
-
-    public void keyReleased(int keyCode){
-        if (keyCode == KeyEvent.VK_W){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_S){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_A){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_D){
-            direction = 0;
+            lx6 = Enemies.x;
+            ly6 = Enemies.y;
         }
     }
 }

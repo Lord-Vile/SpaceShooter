@@ -11,7 +11,7 @@ public class Enemies extends InteractiveGraphicalObject {
     private double hoverY;
     private boolean hoverUp;
     private int level = 1;
-    public static double hp = 100;
+    public double hp = 100;
     public static double x = 700;
     public static double y;
 
