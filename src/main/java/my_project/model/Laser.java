@@ -3,6 +3,7 @@ package my_project.model;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
+import com.sun.javafx.geom.Vec2d;
 import my_project.Config;
 
 import java.awt.*;
@@ -20,8 +21,10 @@ public class Laser extends InteractiveGraphicalObject {
     double shots = 0;
     double startPlayerCooldown = 1;
 
+    private Vec2d[] lasers = new Vec2d[6]; // Vec2d enthält ein x und ein y
+
     double lx = x;
-    public double ly = y;
+    double ly = y;
     double lx1 = x;
     double ly1 = y;
     double lx2 = x;
