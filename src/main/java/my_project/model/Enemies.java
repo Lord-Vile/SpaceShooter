@@ -209,5 +209,26 @@ public class Enemies extends InteractiveGraphicalObject {
             lx6 = this.x;
             ly6 = this.y;
         }
+        if (Laser.ly > y && Laser.ly < y + 100 && Laser.lx > x){
+            hp = 0;
+        }
+        if (Laser.ly1 > y && Laser.ly1 < y + 100 && Laser.lx1 > x){
+            hp = 0;
+        }
+        if (Laser.ly2 > y && Laser.ly2 < y + 100 && Laser.lx2 > x){
+            hp = 0;
+        }
+        if (Laser.ly3 > y && Laser.ly3 < y + 100 && Laser.lx3 > x){
+            hp = 0;
+        }
+        if (Laser.ly4 > y && Laser.ly4 < y + 100 && Laser.lx4 > x){
+            hp = 0;
+        }
+        if (Laser.ly5 > y && Laser.ly5 < y + 100 && Laser.lx5 > x){
+            hp = 0;
+        }
+        if (Laser.getLy6() > y && Laser.getLy6() < y + 100 && Laser.getLx6() > x){
+            hp = 0;
+        }
     }
 }

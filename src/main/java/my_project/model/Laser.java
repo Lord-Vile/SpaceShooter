@@ -3,13 +3,12 @@ package my_project.model;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
-import com.sun.javafx.geom.Vec2d;
 import my_project.Config;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Laser extends InteractiveGraphicalObject {
+public class Laser extends GraphicalObject {
 
     private double hoverY;
     private boolean hoverUp;
@@ -21,22 +20,9 @@ public class Laser extends InteractiveGraphicalObject {
     double shots = 0;
     double startPlayerCooldown = 1;
 
-    private Vec2d[] lasers = new Vec2d[6]; // Vec2d enthält ein x und ein y
+    static double lx = 50;
+    public double ly = 350;
 
-    double lx = x;
-    double ly = y;
-    double lx1 = x;
-    double ly1 = y;
-    double lx2 = x;
-    double ly2 = y;
-    double lx3 = x;
-    double ly3 = y;
-    double lx4 = x;
-    double ly4 = y;
-    double lx5 = x;
-    double ly5 = y;
-    double lx6 = x;
-    double ly6 = y;
     private boolean shoot = false;
     private boolean shoot1 = false;
     private boolean shoot2 = false;
@@ -57,146 +43,28 @@ public class Laser extends InteractiveGraphicalObject {
         if (shoot) {
             drawTool.drawFilledRectangle(lx + 10, ly + 25, 20, 10);
         }
-        if (shoot1) {
-            drawTool.drawFilledRectangle(lx1 + 10, ly1 + 25, 20, 10);
-        }
-        if (shoot2) {
-        drawTool.drawFilledRectangle(lx2 + 10, ly2 + 25, 20, 10);
-        }
-        if (shoot3) {
-        drawTool.drawFilledRectangle(lx3 + 10, ly3 + 25, 20, 10);
-        }
-        if (shoot4) {
-        drawTool.drawFilledRectangle(lx4 + 10, ly4 + 25, 20, 10);
-        }
-        if (shoot5) {
-        drawTool.drawFilledRectangle(lx5 + 10, ly5 + 25, 20, 10);
-        }
-        if (shoot6) {
-            drawTool.drawFilledRectangle(lx6 + 10, ly6 + 25, 20, 10);
-        }
     }
 
     @Override
-    public void update(double dt){
+    public void update(double dt) {
 
         playerCooldown -= dt;
 
-        if (playerCooldown <= 0 && shots == 0){
+        if (playerCooldown <= 0 && shots == 0) {
             shoot = true;
-            shots = 1;
-            playerCooldown = startPlayerCooldown;
-        } else if (playerCooldown <= 0 && shots == 1){
-            shoot1 = true;
-            shots = 2;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 2){
-            shoot2 = true;
-            shots = 3;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 3){
-            shoot3 = true;
-            shots = 4;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 4){
-            shoot4 = true;
-            shots = 5;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 5){
-            shoot5 = true;
-            shots = 6;
-            playerCooldown = startPlayerCooldown;
-        }else if (playerCooldown <= 0 && shots == 6){
-            shoot6 = true;
             shots = 0;
             playerCooldown = startPlayerCooldown;
         }
 
-        if (shoot){
-            lx += 500*dt;
-        }
-        if (shoot1){
-            lx1 += 500*dt;
-        }
-        if (shoot2){
-            lx2 += 500*dt;
-        }
-        if (shoot3){
-            lx3 += 500*dt;
-        }
-        if (shoot4){
-            lx4 += 500*dt;
-        }
-        if (shoot5){
-            lx5 += 500*dt;
-        }
-        if (shoot6){
-            lx6 += 500*dt;
+        if (shoot) {
+            lx += 500 * dt;
         }
 
-        if (lx > Config.WINDOW_WIDTH){
+
+        if (lx > Config.WINDOW_WIDTH) {
             lx = Player.x;
             ly = Player.y;
             shoot = false;
-        }
-        if (lx1 > Config.WINDOW_WIDTH){
-            lx1 = Player.x;
-            ly1 = Player.y;
-            shoot1 = false;
-        }
-        if (lx2 > Config.WINDOW_WIDTH){
-            lx2 = Player.x;
-            ly2 = Player.y;
-            shoot2 = false;
-        }
-        if (lx3 > Config.WINDOW_WIDTH){
-            lx3 = Player.x;
-            ly3 = Player.y;
-            shoot3 = false;
-        }
-        if (lx4 > Config.WINDOW_WIDTH){
-            lx4 = Player.x;
-            ly4 = Player.y;
-            shoot4 = false;
-        }
-        if (lx5 > Config.WINDOW_WIDTH){
-            lx5 = Player.x;
-            ly5 = Player.y;
-            shoot5 = false;
-        }
-        if (lx6 > Config.WINDOW_WIDTH){
-            lx6 = Player.x;
-            ly6 = Player.y;
-            shoot6 = false;
-        }
-
-        if (shoot == false){
-            lx = Player.x;
-            ly = Player.y;
-        }
-        if (shoot1 == false){
-            lx1 = Player.x;
-            ly1 = Player.y;
-        }
-        if (shoot2 == false){
-            lx2 = Player.x;
-            ly2 = Player.y;
-        }
-        if (shoot3 == false){
-            lx3 = Player.x;
-            ly3 = Player.y;
-        }
-        if (shoot4 == false){
-            lx4 = Player.x;
-            ly4 = Player.y;
-        }
-        if (shoot5 == false){
-            lx5 = Player.x;
-            ly5 = Player.y;
-        }
-        if (shoot6 == false){
-            lx6 = Player.x;
-            ly6 = Player.y;
         }
     }
 }
