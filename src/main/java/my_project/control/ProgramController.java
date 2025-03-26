@@ -25,7 +25,6 @@ public class ProgramController {
     private Player p1;
     private Laser l1;
     private Enemies[] e1;
-    private EnemyLaser el1;
     private int currentScene;
     Enemies[] enemies;
 
@@ -74,10 +73,6 @@ public class ProgramController {
         viewController.draw(p1,1);
         viewController.register(p1,1);
 
-        el1 = new EnemyLaser();
-        viewController.draw(el1,1);
-        viewController.register(el1,1);
-
         this.e1 = new Enemies[5];
 
         for (int i = 0; i < 5; i++) {
@@ -94,10 +89,7 @@ public class ProgramController {
      */
 
     public void updateProgram(double dt) {
-        if(l1.collidesWith(e1[1])) {
-            currentScene = 0;
-            viewController.showScene(currentScene);
-        }
+        checkAndHandleCollision();
     }
 
     public void processKeyboardInput(int keyCode) {
@@ -112,5 +104,11 @@ public class ProgramController {
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
         }
+    }
+
+    public boolean checkAndHandleCollision() {
+        if (l1.collidesWith(e1[1])) {
+            e1[1].hp = 0;
+        }return  false;
     }
 }

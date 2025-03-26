@@ -1,5 +1,6 @@
 package my_project.model;
 
+import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
@@ -16,11 +17,19 @@ public class Player extends InteractiveGraphicalObject {
     public static double y = 350;
     private double speed = 300;
 
+    private int  goLeft;
+    private int  goRight;
+    private int  goUp;
+    private int  goDown;
+
 
     public Player(){
         this.setNewImage("src/main/resources/graphic/spaceship.png");
         hoverUp = true;
-
+        this.goLeft = KeyEvent.VK_A;
+        this.goRight = KeyEvent.VK_D;
+        this.goUp = KeyEvent.VK_W;
+        this.goDown = KeyEvent.VK_S;
     }
 
     @Override
@@ -40,53 +49,21 @@ public class Player extends InteractiveGraphicalObject {
                 if (hoverY > 5) hoverUp = true;
             }
         }
+        moonMoving(dt);
+    }
 
-        if (direction == 1){
-            this.y += speed*dt;
-        }
-        if (direction == 2) {
-            this.x += speed*dt;
-        }
-        if (direction == 3) {
-            this.y -= speed*dt;
-        }
-        if (direction == 4) {
+    public void moonMoving(double dt){
+        if (ViewController.isKeyDown(goLeft)){
             this.x -= speed*dt;
         }
-    }
-
-    @Override
-    public void keyPressed(int keyCode){
-        if (keyCode == KeyEvent.VK_W){
-            direction = 3;
+        if (ViewController.isKeyDown(goRight)){
+            this.x += speed*dt;
         }
-        if (keyCode == KeyEvent.VK_S){
-            direction = 1;
+        if (ViewController.isKeyDown(goUp)){
+            this.y -= speed*dt;
         }
-        if (keyCode == KeyEvent.VK_A){
-            direction = 4;
-        }
-        if (keyCode == KeyEvent.VK_D) {
-            direction = 2;
-        }
-
-        if (keyCode == KeyEvent.VK_ESCAPE) {
-            System.exit(0);
-        }
-    }
-
-    public void keyReleased(int keyCode){
-        if (keyCode == KeyEvent.VK_W){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_S){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_A){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_D){
-            direction = 0;
+        if (ViewController.isKeyDown(goDown)){
+            this.y += speed*dt;
         }
     }
 }

@@ -196,35 +196,4 @@ public class Laser extends InteractiveGraphicalObject {
             ly6 = Player.y;
         }
     }
-    @Override
-    public void keyPressed(int keyCode){
-        if (keyCode == KeyEvent.VK_W){
-            direction = 3;
-        }
-        if (keyCode == KeyEvent.VK_S){
-            direction = 1;
-        }
-        if (keyCode == KeyEvent.VK_A){
-            direction = 4;
-        }
-        if (keyCode == KeyEvent.VK_D) {
-            direction = 2;
-        }
-
-    }
-
-    public void keyReleased(int keyCode){
-        if (keyCode == KeyEvent.VK_W){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_S){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_A){
-            direction = 0;
-        }
-        if (keyCode == KeyEvent.VK_D){
-            direction = 0;
-        }
-    }
 }
