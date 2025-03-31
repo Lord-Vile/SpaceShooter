@@ -10,44 +10,28 @@ import java.awt.event.KeyEvent;
 
 public class Laser extends GraphicalObject {
 
-    private double hoverY;
-    private boolean hoverUp;
-    public double x = 50;
-    public double y = 350;
-    private int direction;
-
     double playerCooldown = 1;
     double shots = 0;
     double startPlayerCooldown = 1;
 
-    static double lx = 50;
-    public double ly = 350;
+    private double x = 50;
+    private double y = 350;
+    private int width = 20;
+    private int height = 10;
 
     private boolean shoot = false;
-    private boolean shoot1 = false;
-    private boolean shoot2 = false;
-    private boolean shoot3 = false;
-    private boolean shoot4 = false;
-    private boolean shoot5 = false;
-    private boolean shoot6 = false;
-
-
-
 
     public Laser(){
-        hoverUp = true;
+
     }
 
     @Override
     public void draw(DrawTool drawTool) {
-        if (shoot) {
-            drawTool.drawFilledRectangle(lx + 10, ly + 25, 20, 10);
-        }
+        drawTool.drawFilledRectangle(this.x + 10, this.y + 25, this.width, this.height);
     }
 
     @Override
     public void update(double dt) {
-
         playerCooldown -= dt;
 
         if (playerCooldown <= 0 && shots == 0) {
@@ -57,14 +41,18 @@ public class Laser extends GraphicalObject {
         }
 
         if (shoot) {
-            lx += 500 * dt;
+            this.x += 500 * dt;
         }
 
-
-        if (lx > Config.WINDOW_WIDTH) {
-            lx = Player.x;
-            ly = Player.y;
+        if (this.x > Config.WINDOW_WIDTH) {
+            this.x = Player.x;
+            this.y = Player.y;
             shoot = false;
+        }
+
+        if (shoot == false){
+            this.x = Player.x;
+            this.y = Player.y;
         }
     }
 }

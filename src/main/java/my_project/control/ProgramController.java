@@ -23,7 +23,7 @@ public class ProgramController {
     // Referenzen
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Player p1;
-    private Laser[] l1;
+    private Laser l1;
     private Enemies[] e1;
     private int currentScene;
     Enemies[] enemies;
@@ -67,11 +67,9 @@ public class ProgramController {
         viewController.createScene();
         viewController.draw(sback,1);
 
-        this.l1 = new Laser[7];
-        for (int i = 0; i < 6; i ++) {
-            l1[i] = new Laser();
-            viewController.draw(l1[i], 1);
-        }
+        this.l1 = new Laser();
+        viewController.draw(l1, 1);
+
         p1 = new Player();
         viewController.draw(p1,1);
         viewController.register(p1,1);
@@ -92,7 +90,7 @@ public class ProgramController {
      */
 
     public void updateProgram(double dt) {
-
+        checkAndHandleCollision();
     }
 
     public void processKeyboardInput(int keyCode) {
@@ -106,6 +104,12 @@ public class ProgramController {
 
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
+        }
+    }
+
+    public void checkAndHandleCollision(){
+        if (l1.collidesWith(e1[0])){
+            e1[0].hp = 0;
         }
     }
 }
