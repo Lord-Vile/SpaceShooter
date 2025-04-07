@@ -28,6 +28,7 @@ public class ProgramController {
     private int currentScene;
     Enemies[] enemies;
 
+
     /**
      * Konstruktor
      * Dieser legt das Objekt der Klasse ProgramController an, das den Programmfluss steuert.
@@ -70,6 +71,7 @@ public class ProgramController {
         this.l1 = new Laser();
         viewController.draw(l1, 1);
 
+
         p1 = new Player();
         viewController.draw(p1,1);
         viewController.register(p1,1);
@@ -91,6 +93,7 @@ public class ProgramController {
 
     public void updateProgram(double dt) {
         checkAndHandleCollision();
+
     }
 
     public void processKeyboardInput(int keyCode) {
@@ -108,8 +111,12 @@ public class ProgramController {
     }
 
     public void checkAndHandleCollision(){
-        if (l1.collidesWith(e1[0])){
-            e1[0].hp = 0;
+        for (Enemies enemy : e1) {
+            // Kollisionsprüfung zwischen Laser und jedem Enemy
+            if (l1.collidesWith(enemy)) {   // Schaden verursachen (z.B. HP des Feindes auf 0 setzen)
+                enemy.hp = 0;  // Oder eine andere Logik zum Entfernen/Schaden an Enemy
+                l1.reset();    // Laser zurücksetzen oder deaktivieren
+            }
         }
     }
 }
