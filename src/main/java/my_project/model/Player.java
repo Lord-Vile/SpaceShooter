@@ -1,7 +1,6 @@
 package my_project.model;
 
 import KAGO_framework.control.ViewController;
-import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
 
@@ -14,14 +13,15 @@ public class Player extends InteractiveGraphicalObject {
     private boolean hoverUp;
     public int direction = 0;
     public static double x = 50;
-    public static double y = 350;
+    public static double y = 800;
     private double speed = 300;
+    public int health = 100;  // Start-Gesundheit des Spielers
+    private double invulnerableTime = 0;  // Unverwundbarkeitszeit nach Treffer
 
     private int  goLeft;
     private int  goRight;
     private int  goUp;
     private int  goDown;
-
 
     public Player(){
         this.setNewImage("src/main/resources/graphic/spaceship.png");
@@ -34,7 +34,7 @@ public class Player extends InteractiveGraphicalObject {
 
     @Override
     public void draw(DrawTool drawTool) {
-        drawTool.drawImage(getMyImage(),x,y+hoverY);
+        drawTool.drawImage(getMyImage(), x, y + hoverY);
     }
 
     @Override
@@ -42,14 +42,19 @@ public class Player extends InteractiveGraphicalObject {
         // Bewegung auf der Stelle
         if (direction == 0){
             if (hoverUp){
-                    hoverY = hoverY - 8*dt;
+                hoverY = hoverY - 8*dt;
                 if (hoverY < -5) hoverUp = false;
-                } else {
-                    hoverY = hoverY + 8*dt;
+            } else {
+                hoverY = hoverY + 8*dt;
                 if (hoverY > 5) hoverUp = true;
             }
         }
         moonMoving(dt);
+
+        // Unverwundbarkeit abklingen lassen
+        if (invulnerableTime > 0) {
+            invulnerableTime -= dt;
+        }
     }
 
     public void moonMoving(double dt){
@@ -64,6 +69,20 @@ public class Player extends InteractiveGraphicalObject {
         }
         if (ViewController.isKeyDown(goDown)){
             this.y += speed*dt;
+        }
+    }
+
+    // Methode, um Schaden zu erleiden
+    public void takeDamage(int amount){
+        if (invulnerableTime <= 0) {
+            this.health -= amount;
+            if (this.health <= 0){
+                this.health = 0;
+                System.out.println("Spieler ist gestorben!");
+                // Optional: Szenenwechsel oder Neustart
+            } else {
+                invulnerableTime = 1.5; // Unverwundbarkeit nach Treffer
+            }
         }
     }
 }

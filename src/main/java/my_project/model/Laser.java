@@ -210,26 +210,24 @@ public class Laser extends GraphicalObject {
     public boolean collidesWith(Enemies enemy) {
         // Hier wird eine einfache Rechteck-Kollision geprüft
         return (this.x + this.width > enemy.x && this.x < enemy.x + enemy.getWidth()) &&
-                (this.y + this.height > enemy.y && this.y < enemy.y + enemy.getHeight());
-    }
+                (this.y + this.height > enemy.y && this.y < enemy.y + enemy.getHeight()) ||
 
-    public boolean collidesWith1(Enemies enemy) {
-        return (this.x1 + this.width > enemy.x && this.x1 < enemy.x + enemy.getWidth()) &&
-                (this.y1 + this.height > enemy.y && this.y1 < enemy.y + enemy.getHeight());
-    }
+                (this.x1 + this.width > enemy.x && this.x1 < enemy.x + enemy.getWidth()) &&
+                (this.y1 + this.height > enemy.y && this.y1 < enemy.y + enemy.getHeight()) ||
 
-    public boolean collidesWith2(Enemies enemy){
-        return (this.x2 + this.width > enemy.x && this.x2 < enemy.x + enemy.getWidth()) &&
-                (this.y2 + this.height > enemy.y && this.y2 < enemy.y + enemy.getHeight());
-    }
+                (this.x2 + this.width > enemy.x && this.x2 < enemy.x + enemy.getWidth()) &&
+                (this.y2 + this.height > enemy.y && this.y2 < enemy.y + enemy.getHeight()) ||
 
-    public boolean collidesWith3(Enemies enemy){
-        return (this.x3 + this.width > enemy.x && this.x3 < enemy.x + enemy.getWidth()) &&
-                (this.y3 + this.height > enemy.y && this.y3 < enemy.y + enemy.getHeight());
-    }
+                (this.x3 + this.width > enemy.x && this.x3 < enemy.x + enemy.getWidth()) &&
+                (this.y3 + this.height > enemy.y && this.y3 < enemy.y + enemy.getHeight()) ||
 
-    public boolean collidesWith4(Enemies enemy){
-        return (this.x4 + this.width > enemy.x && this.x4 < enemy.x + enemy.getWidth()) &&
-                (this.y4 + this.height > enemy.y && this.y4 < enemy.y + enemy.getHeight());
+                (this.x4 + this.width > enemy.x && this.x4 < enemy.x + enemy.getWidth()) &&
+                (this.y4 + this.height > enemy.y && this.y4 < enemy.y + enemy.getHeight()) ||
+
+                (this.x5 + this.width > enemy.x && this.x5 < enemy.x + enemy.getWidth()) &&
+                (this.y5 + this.height > enemy.y && this.y5 < enemy.y + enemy.getHeight()) ||
+
+                (this.x6 + this.width > enemy.x && this.x6 < enemy.x + enemy.getWidth()) &&
+                (this.y6 + this.height > enemy.y && this.y6 < enemy.y + enemy.getHeight());
     }
 }

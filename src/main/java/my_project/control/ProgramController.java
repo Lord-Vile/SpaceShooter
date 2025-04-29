@@ -84,6 +84,9 @@ public class ProgramController {
             viewController.register(e1[i],1);
         }
         // Endbildschirm (Szene 2)
+        viewController.createScene();
+        viewController.draw(sback,2);
+
     }
 
     /**
@@ -92,8 +95,14 @@ public class ProgramController {
      */
 
     public void updateProgram(double dt) {
-        checkAndHandleCollision();
+            checkAndHandleCollision();
 
+            if (p1.health <= 0){
+                currentScene = 2;
+                viewController.showScene(currentScene);
+                SoundController.stopSound("startLevelA");
+                SoundController.playSound("startBGM");
+            }
     }
 
     public void processKeyboardInput(int keyCode) {
@@ -110,12 +119,21 @@ public class ProgramController {
         }
     }
 
-    public void checkAndHandleCollision(){
+    public void checkAndHandleCollision() {
+        // Kollision zwischen Spieler und Gegnern
         for (Enemies enemy : e1) {
-            // Kollisionsprüfung zwischen Laser und jedem Enemy
-            if (l1.collidesWith(enemy)) {   // Schaden verursachen (z.B. HP des Feindes auf 0 setzen)
-                enemy.hp = 0;  // Oder eine andere Logik zum Entfernen/Schaden an Enemy
-                l1.reset();    // Laser zurücksetzen oder deaktivieren
+            // Wenn der Spieler mit einem Gegner kollidiert
+            if (enemy.ly + 10 > p1.y && p1.y + 60 < enemy.ly && enemy.lx + 10 > p1.x && p1.x + 60 < enemy.lx) {
+                p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
+                enemy.takeDamage(0); // Der Gegner erleidet keinen Schaden durch Kollision
+            }
+        }
+
+        // Kollision zwischen Laser und Gegnern
+        for (Enemies enemy : e1) {
+            if (l1.collidesWith(enemy)) {
+                enemy.takeDamage(50);  // Gegner erleidet 50 Schaden durch Laser
+                l1.reset();  // Laser zurücksetzen
             }
         }
     }
