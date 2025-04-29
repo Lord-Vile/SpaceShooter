@@ -96,9 +96,19 @@ public class StartBackground extends GraphicalObject {
         drawTool.drawImage(this.getMyImage(), xb, yb);
     }
 
+/*    public void render(float delta) {
+        if (Gdx.input.isButtonJustPressed(Buttons.LEFT)) {
+            game.setScreen(new GameScreen(game)); // Go to game screen on left click
+        }
+*/
+
     @Override
     public void update(double dt) {
 
+ /*       if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            game.setScreen(new LobbyScreen(game)); // Back to lobby on ESC
+        }
+*/
         if (x < -10){
             x = 900;
             y = Math.random()*800;

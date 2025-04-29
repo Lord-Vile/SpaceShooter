@@ -8,6 +8,25 @@ import KAGO_framework.view.DrawTool;
  */
 public class Picture extends GraphicalObject {
 
+    /*    public void create() {
+        // Load space backgrounds
+        backgrounds = new Texture[] {
+            new Texture("bg1.png"),
+            new Texture("bg2.png"),
+            new Texture("bg3.png")
+                };
+
+        this.setScreen(new LobbyScreen(this));
+    }
+
+   public void dispose() {
+        for (Texture bg : backgrounds) {
+            bg.dispose();
+        }
+        super.dispose();
+    }
+     */
+
     public Picture(double x, double y, String path){
         setNewImage(path);
         this.x = x;
