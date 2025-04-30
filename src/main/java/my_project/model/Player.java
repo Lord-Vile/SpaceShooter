@@ -73,15 +73,15 @@ public class Player extends InteractiveGraphicalObject {
     }
 
     // Methode, um Schaden zu erleiden
-    public void takeDamage(int amount){
+    public void takeDamage(int amount) {
         if (invulnerableTime <= 0) {
+            invulnerableTime = 0.5;
             this.health -= amount;
-            if (this.health <= 0){
+            if (this.health <= 0) {
                 this.health = 0;
                 System.out.println("Spieler ist gestorben!");
+
                 // Optional: Szenenwechsel oder Neustart
-            } else {
-                invulnerableTime = 1.5; // Unverwundbarkeit nach Treffer
             }
         }
     }

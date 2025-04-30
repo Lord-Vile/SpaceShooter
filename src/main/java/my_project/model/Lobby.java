@@ -8,5 +8,8 @@ import my_project.Config;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+public class Lobby extends InteractiveGraphicalObject {
+    public Lobby(){}
 
 
+}
