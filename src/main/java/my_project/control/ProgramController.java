@@ -125,7 +125,6 @@ public class ProgramController {
             // Wenn der Spieler mit einem Gegner kollidiert
             if (enemy.ly + 10 > p1.y && p1.y  < enemy.ly && enemy.lx - 55 < p1.x && p1.x + 60 > enemy.lx) {
                 p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
-                enemy.takeDamage(0); // Der Gegner erleidet keinen Schaden durch Kollision
             }
             if (enemy.ly1 + 10 > p1.y && p1.y < enemy.ly1 && enemy.lx1 - 55 < p1.x && p1.x + 60 > enemy.lx1) {
                 p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
