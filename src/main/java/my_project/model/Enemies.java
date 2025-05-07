@@ -236,4 +236,28 @@ public class Enemies extends InteractiveGraphicalObject {
             shots = 7;
         }
     }
+
+    public boolean collidesWith(Player p) {
+        // Hier wird eine einfache Rechteck-Kollision geprüft
+        return (this.lx + this.width > p.x && this.x < p.x + p.getWidth()) &&
+                (this.ly + this.height > p.y && this.y < p.y + p.getHeight()) ||
+
+                (this.lx1 + this.width > p.x && this.lx1 < p.x + p.getWidth()) &&
+                        (this.ly1 + this.height > p.y && this.ly1 < p.y + p.getHeight()) ||
+
+                (this.lx2 + this.width > p.x && this.lx2 < p.x + p.getWidth()) &&
+                        (this.ly2 + this.height > p.y && this.ly2 < p.y + p.getHeight()) ||
+
+                (this.lx3 + this.width > p.x && this.lx3 < p.x + p.getWidth()) &&
+                        (this.ly3 + this.height > p.y && this.ly3 < p.y + p.getHeight()) ||
+
+                (this.lx4 + this.width > p.x && this.lx4 < p.x + p.getWidth()) &&
+                        (this.ly4 + this.height > p.y && this.ly4 < p.y + p.getHeight()) ||
+
+                (this.lx5 + this.width > p.x && this.lx5 < p.x + p.getWidth()) &&
+                        (this.ly5 + this.height > p.y && this.ly5 < p.y + p.getHeight()) ||
+
+                (this.lx6 + this.width > p.x && this.lx6 < p.x + p.getWidth()) &&
+                        (this.ly6 + this.height > p.y && this.ly6 < p.y + p.getHeight());
+    }
 }

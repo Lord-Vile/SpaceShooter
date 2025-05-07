@@ -44,6 +44,7 @@ public class Laser extends GraphicalObject {
 
     @Override
     public void draw(DrawTool drawTool) {
+        drawTool.setCurrentColor(Color.BLUE);
         if (shoot) {
             drawTool.drawFilledRectangle(x + 10, y + 25, width, height);
         }

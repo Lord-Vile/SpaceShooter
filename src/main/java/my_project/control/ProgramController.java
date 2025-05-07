@@ -24,6 +24,8 @@ public class ProgramController {
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Player p1;
     private Laser l1;
+    private Lobby lobby;
+    private Lose loose;
     private Enemies[] e1;
     private int currentScene;
     Enemies[] enemies;
@@ -67,6 +69,8 @@ public class ProgramController {
         viewController.getSoundController().loadSound("src/main/resources/sound/whoosh.mp3","whoosh", false);
         viewController.createScene();
         viewController.draw(sback,1);
+        lobby = new Lobby();
+        viewController.draw(lobby,1);
 
         this.l1 = new Laser();
         viewController.draw(l1, 1);
@@ -120,38 +124,14 @@ public class ProgramController {
     }
 
     public void checkAndHandleCollision() {
-        // Kollision zwischen Spieler und Gegnern
-        for (Enemies enemy : e1) {
-            // Wenn der Spieler mit einem Gegner kollidiert
-            if (enemy.ly + 10 > p1.y && p1.y  < enemy.ly && enemy.lx - 55 < p1.x && p1.x + 60 > enemy.lx) {
-                p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
-            }
-            if (enemy.ly1 + 10 > p1.y && p1.y < enemy.ly1 && enemy.lx1 - 55 < p1.x && p1.x + 60 > enemy.lx1) {
-                p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
-            }
-            if (enemy.ly2 + 10 > p1.y && p1.y < enemy.ly2 && enemy.lx2 - 55 < p1.x && p1.x + 60 > enemy.lx2) {
-                p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
-            }
-            if (enemy.ly3 + 10 > p1.y && p1.y < enemy.ly3 && enemy.lx3 - 55 < p1.x && p1.x + 60 > enemy.lx3) {
-                p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
-            }
-            if (enemy.ly4 + 10 > p1.y && p1.y < enemy.ly4 && enemy.lx4 - 55 < p1.x && p1.x + 60 > enemy.lx4) {
-                p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
-            }
-            if (enemy.ly5 + 10 > p1.y && p1.y < enemy.ly5 && enemy.lx5 - 55 < p1.x && p1.x + 60 > enemy.lx5) {
-                p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
-            }
-            if (enemy.ly6 + 10 > p1.y && p1.y < enemy.ly6 && enemy.lx6 - 55 < p1.x && p1.x + 60 > enemy.lx6) {
-                p1.takeDamage(50);  // Der Spieler erleidet 50 Schaden
-            }
-
-        }
-
         // Kollision zwischen Laser und Gegnern
         for (Enemies enemy : e1) {
             if (l1.collidesWith(enemy)) {
                 enemy.takeDamage(50);  // Gegner erleidet 50 Schaden durch Laser
                 l1.reset();  // Laser zurücksetzen
+            }
+            if (enemy.collidesWith(p1)){
+                p1.takeDamage(50);
             }
         }
     }
