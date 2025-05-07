@@ -74,6 +74,8 @@ public class ProgramController {
 
         this.l1 = new Laser();
         viewController.draw(l1, 1);
+        this.loose = new Lose();
+        viewController.draw(loose, 1);
 
 
         p1 = new Player();
@@ -86,9 +88,18 @@ public class ProgramController {
             e1[i] = new Enemies(100*i + 100);
             viewController.draw(e1[i],1);
             viewController.register(e1[i],1);
+
+            viewController.draw(e1[i],3);
+            viewController.register(e1[i],3);
+
+            viewController.draw(e1[i],4);
+            viewController.register(e1[i],4);
+
+            viewController.draw(e1[i],5);
+            viewController.register(e1[i],5);
         }
         // Endbildschirm (Szene 2)
-        viewController.createScene();
+        viewController.createScene(); //death-screen
         viewController.draw(sback,2);
 
     }
