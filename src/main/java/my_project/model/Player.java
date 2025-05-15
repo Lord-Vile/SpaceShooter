@@ -42,11 +42,11 @@ public class Player extends InteractiveGraphicalObject {
         // Bewegung auf der Stelle
         if (direction == 0){
             if (hoverUp){
-                hoverY = hoverY - 8*dt;
-                if (hoverY < -5) hoverUp = false;
+                hoverY = hoverY - 30*dt;
+                if (hoverY < -10) hoverUp = false;
             } else {
-                hoverY = hoverY + 8*dt;
-                if (hoverY > 5) hoverUp = true;
+                hoverY = hoverY + 30*dt;
+                if (hoverY > 10) hoverUp = true;
             }
         }
         moonMoving(dt);
