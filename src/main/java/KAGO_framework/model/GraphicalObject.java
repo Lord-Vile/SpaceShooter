@@ -87,8 +87,8 @@ public class GraphicalObject implements Drawable {
      */
     public void setImage(BufferedImage image) {
         this.myImage = image;
-        width = this.myImage.getWidth();
-        height = this.myImage.getHeight();
+        width = this.myImage.getWidth() ;
+        height = this.myImage.getHeight() ;
     }
 
     @Override

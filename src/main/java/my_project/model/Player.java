@@ -14,7 +14,7 @@ public class Player extends InteractiveGraphicalObject {
     private boolean hoverUp;
     public int direction = 0;
     public static double x = 50;
-    public static double y = 800;
+    public static double y = 700;
     private double speed = 300;
     public int health = 100;  // Start-Gesundheit des Spielers
     private double invulnerableTime = 0;  // Unverwundbarkeitszeit nach Treffer
