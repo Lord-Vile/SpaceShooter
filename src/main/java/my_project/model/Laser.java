@@ -17,7 +17,7 @@ public class Laser extends GraphicalObject {
     private double x = 50;
     private double y = 350;
     private int width = 20;
-    private int height = 10;
+    private int height = 2;
     double x1 = x;
     double y1 = y;
     double x2 = x;

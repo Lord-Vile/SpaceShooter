@@ -2,9 +2,11 @@ package my_project.control;
 
 import KAGO_framework.control.SoundController;
 import KAGO_framework.control.ViewController;
+import KAGO_framework.view.DrawTool;
 import my_project.model.*;
 import my_project.view.InputManager;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -33,11 +35,10 @@ public class ProgramController {
     private Enemies[] e5;
     private int currentScene;
     Enemies[] enemies;
-    private boolean level1 = false;
-    private boolean level2 = false;
-    private boolean level3 = false;
-    private boolean level4 = false;
-    private boolean level5 = false;
+    private boolean spawnEnemies = false;
+    private int anzahlEnemies = 3;
+    private int toteEnemies = 0;
+    private int score = 0;
 
 
     /**
@@ -87,41 +88,15 @@ public class ProgramController {
         viewController.draw(p1,1);
         viewController.register(p1,1);
 
-        this.e1 = new Enemies[3];
+        this.e1 = new Enemies[5];
 
-        for (int i = 0; i < 3; i++) {
-            e1[i] = new Enemies(100*i + 100);
+        for (int i = 0; i < 5; i++) {
+            e1[i] = new Enemies();
             viewController.draw(e1[i],1);
             viewController.register(e1[i],1);
         }
 
-        this.e2 = new Enemies[4];
-        for (int i = 0; i < 4; i++) {
-            e2[i] = new Enemies(100*i + 100);
-            viewController.draw(e2[i],3);
-            viewController.register(e2[i],3);
-        }
 
-        this.e3 = new Enemies[5];
-        for (int i = 0; i < 5; i++) {
-            e3[i] = new Enemies(100*i + 100);
-            viewController.draw(e3[i],4);
-            viewController.register(e3[i],4);
-        }
-
-        this.e4 = new Enemies[6];
-        for (int i = 0; i < 6; i++) {
-            e4[i] = new Enemies(100*i + 100);
-            viewController.draw(e4[i],5);
-            viewController.register(e4[i],5);
-        }
-
-        this.e5 = new Enemies[7];
-        for (int i = 0; i < 7; i++) {
-            e5[i] = new Enemies(100*i + 100);
-            viewController.draw(e5[i],6);
-            viewController.register(e5[i],6);
-        }
         // Endbildschirm (Szene 2)
         viewController.createScene(); //death-screen
         viewController.draw(sback,2);
@@ -134,27 +109,54 @@ public class ProgramController {
 
     /**
      * Diese Methode wird vom ViewController-Objekt automatisch mit jedem Frame aufgerufen (ca. 60mal pro Sekunde)
-     * @param dt Zeit seit letztem Frame in Sekunden
+     * Zeit seit letztem Frame in Sekunden
      */
+
 
     public void updateProgram(double dt) {
         checkAndHandleCollision();
-        if (p1.health <= 0){
+
+        for (Enemies enemy : e1) {
+            if (enemy.tot == true){
+                toteEnemies += 1;
+                System.out.println(toteEnemies);
+                score += 10;
+            }
+        }
+        if (p1.health <= 0) {
             currentScene = 2;
             viewController.showScene(currentScene);
         }
-        System.out.println(currentScene);
-        for (Enemies enemy : e1) {
-            if (enemy.hp < 0){
-                currentScene = 3;
-                viewController.showScene(currentScene);
-            }
+
+        if (toteEnemies >= 5){
+            spawnEnemies = true;
         }
+
+        if (spawnEnemies) {
+            // Erstelle ein neues Array mit Platz für mehr Gegner
+            Enemies[] neueE1 = new Enemies[e1.length + 5];  // 5 neue Gegner hinzufügen
+
+            // Übernehme die alten Gegner in das neue Array
+            for (int i = 0; i < e1.length; i++) {
+                neueE1[i] = e1[i];
+            }
+
+            // Füge die neuen Gegner zum Array hinzu
+            for (int i = e1.length; i < neueE1.length; i++) {
+                neueE1[i] = new Enemies();
+                viewController.draw(neueE1[i], 1);
+                viewController.register(neueE1[i], 1);
+            }
+
+            // Ersetze das alte Array mit dem neuen
+            e1 = neueE1;
+            spawnEnemies = false;
+            toteEnemies = -10;  // Zurücksetzen
+        }
+
+
     }
 
-    public void keyPressed(int keyCode) {
-
-    }
 
     public void processKeyboardInput(int keyCode) {
         if (keyCode == KeyEvent.VK_SPACE && currentScene == 0) {
@@ -168,16 +170,16 @@ public class ProgramController {
 
 
     public void checkAndHandleCollision() {
-        // Kollision zwischen Laser und Gegnern
         for (Enemies enemy : e1) {
             if (l1.collidesWith(enemy)) {
-                enemy.takeDamage(50);  // Gegner erleidet 50 Schaden durch Laser
-                l1.reset();  // Laser zurücksetzen
-            }
-            if (enemy.hp  > 0){
-                if (enemy.collidesWith(p1)) {
-                    p1.takeDamage(50);
+                if (!enemy.tot) {
+                    enemy.takeDamage(50);
                 }
+                l1.reset(); // Laser wird unabhängig vom Gegnerzustand zurückgesetzt
+            }
+
+            if (!enemy.tot && enemy.collidesWith(p1)) {
+                p1.takeDamage(20);
             }
         }
     }

@@ -2,6 +2,7 @@ package my_project.model;
 
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
+import my_project.control.ProgramController;
 
 import java.awt.*;
 
@@ -11,12 +12,18 @@ public class Enemies extends InteractiveGraphicalObject {
     private boolean hoverUp;
     private int level = 1;
     public double hp = 100; // HP der Gegner
-    public double x = 700;
-    public double y = 700;
+    public double x = Math.random()*800+400;
+    public double y = Math.random()*800;
+    private double gehtBis = Math.random()*400 + 300;
+    public boolean tot = false;
+    public boolean wurdeGezaehlt = false;
 
     private double laserCooldown = 1;
     private double shots = 0;
     private final double startLaserCooldown = 1;
+    private double respawnTimer = 0;  // Zeit bis zum nächsten Respawn
+    private final double RESPAWN_TIME = 3; // Sekunden
+
 
     public double lx = x;
     public double ly = y;
@@ -41,11 +48,12 @@ public class Enemies extends InteractiveGraphicalObject {
     public boolean shoot5 = false;
     public boolean shoot6 = false;
 
+    public static int score = 0;
 
-    public Enemies(int y) {
+
+    public Enemies() {
         this.setNewImage("src/main/resources/graphic/gegner.png");
         hoverUp = true;
-        this.y = y;
     }
 
     @Override
@@ -84,21 +92,32 @@ public class Enemies extends InteractiveGraphicalObject {
     }
 
     @Override
-    public void update(double dt) {
-        if (hp <= 0) {
-            this.x = 1000; // Entfernen aus dem Sichtbereich
-            shoot = false;
-            shoot1 = false;
-            shoot2 = false;
-            shoot3 = false;
-            shoot4 = false;
-            shoot5 = false;
-            shoot6 = false;
+        public void update(double dt) {
+            if (tot) {
+                respawnTimer -= dt;
+                if (respawnTimer <= 0) {
+                    // Gegner wiederbeleben
+                    this.x = Math.random() * 800 + 900; // Rechts außerhalb
+                    this.y = Math.random() * 600;
+                    this.gehtBis = Math.random() * 400 + 300;
+                    this.hp = 100;
+                    this.shots = 0;
+                    this.tot = false;
+                    System.out.println("Gegner respawned!");
+                    score += 10;
+                }
+            }
 
-            shots = 7;
-        }
+            // Wenn Gegner stirbt
+            if (hp <= 0 && !tot) {
+                this.x = 2000;  // Wegschieben
+                this.tot = true;
+                this.respawnTimer = RESPAWN_TIME;
+                System.out.println("Gegner tot, respawn in " + RESPAWN_TIME + "s");
+            }
 
-        // Hover-Effekt
+
+            // Hover-Effekt
         if (hoverUp) {
             hoverY = hoverY - 25 * dt;
             //this.y = hoverY;
@@ -108,8 +127,9 @@ public class Enemies extends InteractiveGraphicalObject {
             //this.y = hoverY;
             if (hoverY > 15) hoverUp = true;
         }
-        if (hp <= 0){
-            this.x = 1000;
+
+        if (this.x > gehtBis){
+            this.x = this.x - 150*dt;
         }
 
         laserCooldown -= dt;
@@ -235,17 +255,10 @@ public class Enemies extends InteractiveGraphicalObject {
     // Methode zum Schadennehmen
     public void takeDamage(double amount) {
         this.hp -= amount;
-        if (this.hp <= 0) {
-            this.hp = 0;
-            this.x = 1000;
-            shoot = false;
-            shoot1 = false;
-            shoot2 = false;
-            shoot3 = false;
-            shoot4 = false;
-            shoot5 = false;
-            shoot6 = false;
-            shots = 8;
+        if (this.hp <= 0 && !tot) {
+            tot = true;
+            System.out.println("Enemy HP: " + hp);
+            score += 10;
         }
     }
 

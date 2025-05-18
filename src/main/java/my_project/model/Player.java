@@ -3,6 +3,7 @@ package my_project.model;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.InteractiveGraphicalObject;
 import KAGO_framework.view.DrawTool;
+import my_project.control.ProgramController;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -35,9 +36,12 @@ public class Player extends InteractiveGraphicalObject {
     @Override
     public void draw(DrawTool drawTool) {
         drawTool.setCurrentColor(Color.green);
-        drawTool.drawFilledRectangle(x, y - 10, health, 2);
+        drawTool.drawFilledRectangle(x, y - 10, health/2, 2);
         drawTool.drawImage(getMyImage(), x, y + hoverY);
         drawTool.drawRectangle(x, y, 60, 60);
+
+        drawTool.setCurrentColor(Color.WHITE);
+        drawTool.drawText(50, 50, "Dein Score: " + Enemies.score);
     }
 
     @Override
