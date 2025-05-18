@@ -14,10 +14,10 @@ public class Laser extends GraphicalObject {
     double shots = 0;
     double startPlayerCooldown = 1;
 
-    private double x = 50;
-    private double y = 350;
-    private int width = 20;
-    private int height = 2;
+    public double x = 50;
+    public double y = 350;
+    public int width = 20;
+    public int height = 2;
     double x1 = x;
     double y1 = y;
     double x2 = x;

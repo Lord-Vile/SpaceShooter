@@ -15,8 +15,8 @@ public class BossLevel extends Enemies {
     protected boolean hoverUp;
     protected int level = 1;
     public double hp = 10; // HP der Gegner
-    private double x = 1000;
-    private double y = 50;
+    public double x = 1000;
+    public double y = 50;
     private double gehtBis = 600;
     public boolean tot = false;
     public boolean wurdeGezaehlt = false;
@@ -131,6 +131,8 @@ public void draw(DrawTool drawTool) {
         drawTool.drawFilledRectangle(lx4 + 10, ly + 250 + hoverY*5, 20, 3);
         drawTool.drawFilledRectangle(lx4 + 10, ly + 350 + hoverY*5, 20, 3);
         drawTool.drawFilledRectangle(lx4 + 10, ly + 530 + hoverY*5, 20, 3);
+
+
     }
     if (shoot5 && hp > 0) {
         int timer = 3;
@@ -317,7 +319,7 @@ public void draw(DrawTool drawTool) {
         }
     }
 
-    public boolean collidesWith(Player p) {
+    public boolean collidesWith(Player p, Laser l) {
         // Hier wird eine einfache Rechteck-Kollision geprüft
         return (this.lx + this.width > p.x/2 && this.lx < p.x/2 + p.getWidth()) &&
                 (this.ly + this.height > p.y && this.ly < p.y + 10) ||
@@ -338,10 +340,12 @@ public void draw(DrawTool drawTool) {
                         (this.ly5 + this.height > p.y && this.ly5 < p.y + 10) ||
 
                 (this.lx6 + this.width > p.x/2 && this.lx6 < p.x/2 + p.getWidth()) &&
-                        (this.ly6 + this.height > p.y && this.ly6 < p.y + 10);
+                        (this.ly6 + this.height > p.y && this.ly6 < p.y + 10) ||
+
+                (this.x + l.width > l.x / 2 && this.x < l.x / 2 + l.getWidth()) &&
+                        (this.y + l.height > l.y && this.y < l.y + 10);
 
     }
-
 
 }
 

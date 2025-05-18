@@ -181,10 +181,18 @@ public class ProgramController {
                 l1.reset(); // Laser wird unabhängig vom Gegnerzustand zurückgesetzt
             }
 
-
-
+//ich glaube es ist wegen der gehtbis variable
             if (!enemy.tot && enemy.collidesWith(p1)) {
                 p1.takeDamage(20);
+            }
+        }
+        if (boss.collidesWith(p1)) {
+            p1.takeDamage(20);
+        }
+        if (boss.collidesWith(l1)) {
+            if (!boss.tot) {
+                boss.takeDamage(50);
+                l1.reset();
             }
         }
     }
