@@ -124,7 +124,7 @@ public class ProgramController {
             }
         }
         if (p1.health <= 0) {
-            currentScene = 2;
+            currentScene = 0;
             viewController.showScene(currentScene);
         }
 

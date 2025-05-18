@@ -89,6 +89,9 @@ public class StartBackground extends GraphicalObject {
         drawTool.drawFilledCircle(x10,y10,radius10);
         drawTool.drawFilledCircle(x11,y11,radius11);
         drawTool.drawFilledCircle(x12,y12,radius12);
+
+        drawTool.setCurrentColor(Color.WHITE);
+        drawTool.drawText(50, 50, "Dein Score: " + Enemies.score);
     }
 
     public void drawMars(DrawTool drawTool){
