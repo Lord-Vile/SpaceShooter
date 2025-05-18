@@ -38,7 +38,6 @@ public class Player extends InteractiveGraphicalObject {
         drawTool.setCurrentColor(Color.green);
         drawTool.drawFilledRectangle(x, y - 10, health/2, 2);
         drawTool.drawImage(getMyImage(), x, y + hoverY);
-        drawTool.drawRectangle(x, y, 60, 60);
 
         drawTool.setCurrentColor(Color.WHITE);
         drawTool.drawText(50, 50, "Dein Score: " + Enemies.score);
