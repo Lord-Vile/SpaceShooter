@@ -52,16 +52,7 @@ public class Enemies extends InteractiveGraphicalObject {
 
 
     public Enemies() {
-        this.setNewImage("src/main/resources/graphic/gegner2" +
-                "" +
-                "" +
-                "" +
-                "" +
-                "" +
-                "" +
-                "" +
-                "" +
-                ".png");
+        this.setNewImage("src/main/resources/graphic/gegner2.png");
         hoverUp = true;
     }
 
