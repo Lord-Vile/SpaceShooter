@@ -7,9 +7,9 @@ import java.awt.*;
 
 public class Enemies extends InteractiveGraphicalObject {
 
-    private double hoverY;
-    private boolean hoverUp;
-    private int level = 1;
+    protected double hoverY;
+    protected boolean hoverUp;
+    protected int level = 1;
     public double hp = 100; // HP der Gegner
     public double x = Math.random()*800+400;
     public double y = Math.random()*800;
@@ -17,9 +17,9 @@ public class Enemies extends InteractiveGraphicalObject {
     public boolean tot = false;
     public boolean wurdeGezaehlt = false;
 
-    private double laserCooldown = 1;
-    private double shots = 0;
-    private final double startLaserCooldown = 1;
+    protected double laserCooldown = 1;
+    protected double shots = 0;
+    protected final double startLaserCooldown = 1;
     private double respawnTimer = 0;  // Zeit bis zum nächsten Respawn
     private final double RESPAWN_TIME = 3; // Sekunden
 
@@ -263,25 +263,25 @@ public class Enemies extends InteractiveGraphicalObject {
 
     public boolean collidesWith(Player p) {
         // Hier wird eine einfache Rechteck-Kollision geprüft
-        return (this.lx + this.width > p.x && this.x < p.x + p.getWidth()) &&
-                    (this.ly + this.height > p.y && this.y < p.y + p.getHeight()) ||
+        return (this.lx + this.width > p.x - 30 && this.x < p.x - 30 + p.getWidth()) &&
+                (this.ly + this.height > p.y/3 && this.y < p.y/3 + p.getHeight()) ||
 
-                (this.lx1 + this.width > p.x && this.lx1 < p.x + p.getWidth()) &&
-                        (this.ly1 + this.height > p.y && this.ly1 < p.y + p.getHeight()) ||
+                (this.lx1 + this.width > p.x - 30 && this.lx1 < p.x - 30 + p.getWidth()) &&
+                        (this.ly1 + this.height > p.y/3 && this.ly1 < p.y/3 + p.getHeight()) ||
 
-                (this.lx2 + this.width > p.x && this.lx2 < p.x + p.getWidth()) &&
-                        (this.ly2 + this.height > p.y && this.ly2 < p.y + p.getHeight()) ||
+                (this.lx2 + this.width > p.x - 30 && this.lx2 < p.x - 30 + p.getWidth()) &&
+                        (this.ly2 + this.height > p.y/3 && this.ly2 < p.y/3 + p.getHeight()) ||
 
-                (this.lx3 + this.width > p.x && this.lx3 < p.x + p.getWidth()) &&
-                        (this.ly3 + this.height > p.y && this.ly3 < p.y + p.getHeight()) ||
+                (this.lx3 + this.width > p.x - 30 && this.lx3 < p.x - 30 + p.getWidth()) &&
+                        (this.ly3 + this.height > p.y/3 && this.ly3 < p.y/3 + p.getHeight()) ||
 
-                (this.lx4 + this.width > p.x && this.lx4 < p.x + p.getWidth()) &&
-                        (this.ly4 + this.height > p.y && this.ly4 < p.y + p.getHeight()) ||
+                (this.lx4 + this.width > p.x - 30 && this.lx4 < p.x - 30 + p.getWidth()) &&
+                        (this.ly4 + this.height > p.y/3 && this.ly4 < p.y/3 + p.getHeight()) ||
 
-                (this.lx5 + this.width > p.x && this.lx5 < p.x + p.getWidth()) &&
-                        (this.ly5 + this.height > p.y && this.ly5 < p.y + p.getHeight()) ||
+                (this.lx5 + this.width > p.x - 30 && this.lx5 < p.x - 30 + p.getWidth()) &&
+                        (this.ly5 + this.height > p.y/3 && this.ly5 < p.y/3 + p.getHeight()) ||
 
-                (this.lx6 + this.width > p.x && this.lx6 < p.x + p.getWidth()) &&
-                        (this.ly6 + this.height > p.y && this.ly6 < p.y + p.getHeight());
+                (this.lx6 + this.width > p.x - 30 && this.lx6 < p.x - 30 + p.getWidth()) &&
+                        (this.ly6 + this.height > p.y/3 && this.ly6 < p.y/3 + p.getHeight());
     }
 }
