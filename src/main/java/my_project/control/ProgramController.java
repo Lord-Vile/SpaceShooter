@@ -27,8 +27,17 @@ public class ProgramController {
     private Lobby lobby;
     private Lose loose;
     private Enemies[] e1;
+    private Enemies[] e2;
+    private Enemies[] e3;
+    private Enemies[] e4;
+    private Enemies[] e5;
     private int currentScene;
     Enemies[] enemies;
+    private boolean level1 = false;
+    private boolean level2 = false;
+    private boolean level3 = false;
+    private boolean level4 = false;
+    private boolean level5 = false;
 
 
     /**
@@ -69,38 +78,57 @@ public class ProgramController {
         viewController.getSoundController().loadSound("src/main/resources/sound/whoosh.mp3","whoosh", false);
         viewController.createScene();
         viewController.draw(sback,1);
-        lobby = new Lobby();
-        viewController.draw(lobby,1);
 
         this.l1 = new Laser();
         viewController.draw(l1, 1);
-        this.loose = new Lose();
-        viewController.draw(loose, 1);
 
 
         p1 = new Player();
         viewController.draw(p1,1);
         viewController.register(p1,1);
 
-        this.e1 = new Enemies[5];
+        this.e1 = new Enemies[3];
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             e1[i] = new Enemies(100*i + 100);
             viewController.draw(e1[i],1);
             viewController.register(e1[i],1);
+        }
 
-            viewController.draw(e1[i],3);
-            viewController.register(e1[i],3);
+        this.e2 = new Enemies[4];
+        for (int i = 0; i < 4; i++) {
+            e2[i] = new Enemies(100*i + 100);
+            viewController.draw(e2[i],3);
+            viewController.register(e2[i],3);
+        }
 
-            viewController.draw(e1[i],4);
-            viewController.register(e1[i],4);
+        this.e3 = new Enemies[5];
+        for (int i = 0; i < 5; i++) {
+            e3[i] = new Enemies(100*i + 100);
+            viewController.draw(e3[i],4);
+            viewController.register(e3[i],4);
+        }
 
-            viewController.draw(e1[i],5);
-            viewController.register(e1[i],5);
+        this.e4 = new Enemies[6];
+        for (int i = 0; i < 6; i++) {
+            e4[i] = new Enemies(100*i + 100);
+            viewController.draw(e4[i],5);
+            viewController.register(e4[i],5);
+        }
+
+        this.e5 = new Enemies[7];
+        for (int i = 0; i < 7; i++) {
+            e5[i] = new Enemies(100*i + 100);
+            viewController.draw(e5[i],6);
+            viewController.register(e5[i],6);
         }
         // Endbildschirm (Szene 2)
         viewController.createScene(); //death-screen
         viewController.draw(sback,2);
+        this.loose = new Lose();
+        viewController.draw(loose, 2);
+        lobby = new Lobby();
+        viewController.draw(lobby,2);
 
     }
 
@@ -110,14 +138,22 @@ public class ProgramController {
      */
 
     public void updateProgram(double dt) {
-            checkAndHandleCollision();
-
-            if (p1.health <= 0){
-                currentScene = 2;
+        checkAndHandleCollision();
+        if (p1.health <= 0){
+            currentScene = 2;
+            viewController.showScene(currentScene);
+        }
+        System.out.println(currentScene);
+        for (Enemies enemy : e1) {
+            if (enemy.hp < 0){
+                currentScene = 3;
                 viewController.showScene(currentScene);
-                SoundController.stopSound("startLevelA");
-                SoundController.playSound("startBGM");
             }
+        }
+    }
+
+    public void keyPressed(int keyCode) {
+
     }
 
     public void processKeyboardInput(int keyCode) {
@@ -128,11 +164,8 @@ public class ProgramController {
             SoundController.playSound("startLevelA");
             SoundController.playSound("whoosh");
         }
-
-        if (keyCode == KeyEvent.VK_ESCAPE) {
-            System.exit(0);
-        }
     }
+
 
     public void checkAndHandleCollision() {
         // Kollision zwischen Laser und Gegnern
@@ -141,8 +174,10 @@ public class ProgramController {
                 enemy.takeDamage(50);  // Gegner erleidet 50 Schaden durch Laser
                 l1.reset();  // Laser zurücksetzen
             }
-            if (enemy.collidesWith(p1)){
-                p1.takeDamage(50);
+            if (enemy.hp  > 0){
+                if (enemy.collidesWith(p1)) {
+                    p1.takeDamage(50);
+                }
             }
         }
     }

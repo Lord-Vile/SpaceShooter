@@ -57,29 +57,29 @@ public class Enemies extends InteractiveGraphicalObject {
         // Wenn der Gegner schießt
         drawTool.setCurrentColor(new Color(215, 43, 124));
         if (shoot && hp > 0) {
-            drawTool.drawFilledRectangle(lx + 10, ly + 53 + hoverY, 15, 2);
+            drawTool.drawFilledRectangle(lx + 10, ly + 53, 15, 2);
         }
         if (shoot1 && hp > 0) {
             drawTool.drawFilledRectangle(lx1 + 10, ly1 + 53, 15, 2);
         }
         if (shoot2 && hp > 0) {
-            drawTool.drawFilledRectangle(lx2 + 10, ly2 + 53 + hoverY*3, 15, 2);
+            drawTool.drawFilledRectangle(lx2 + 10, ly2 + 53, 15, 2);
         }
         if (shoot3 && hp > 0) {
-            drawTool.drawFilledRectangle(lx3 + 10, ly3 + 53 + hoverY*2, 15, 2);
+            drawTool.drawFilledRectangle(lx3 + 10, ly3 + 53, 15, 2);
         }
         if (shoot4 && hp > 0) {
-            drawTool.drawFilledRectangle(lx4 + 10, ly4 + 53 + hoverY*5, 15, 2);
+            drawTool.drawFilledRectangle(lx4 + 10, ly4 + 53, 15, 2);
         }
         if (shoot5 && hp > 0) {
             int timer = 3;
             if (timer > 0) {
-                drawTool.drawFilledRectangle(lx5 - 350, ly5 + 53 + hoverY,  30 + lx5*2, 2);
+                drawTool.drawFilledRectangle(lx5 - 350, ly5 + 53,  30 + lx5*2, 2);
             }
         }
         if (shoot6 && hp > 0) {
-            drawTool.drawFilledRectangle(lx6 + 10, ly6 + 43 + hoverY*2, 15, 2);
-            drawTool.drawFilledRectangle(lx6 + 10, ly6 + 63 + hoverY*2, 15, 2);
+            drawTool.drawFilledRectangle(lx6 + 10, ly6 + 43, 15, 2);
+            drawTool.drawFilledRectangle(lx6 + 10, ly6 + 63, 15, 2);
         }
     }
 
@@ -239,14 +239,20 @@ public class Enemies extends InteractiveGraphicalObject {
             this.hp = 0;
             this.x = 1000;
             shoot = false;
-            shots = 7;
+            shoot1 = false;
+            shoot2 = false;
+            shoot3 = false;
+            shoot4 = false;
+            shoot5 = false;
+            shoot6 = false;
+            shots = 8;
         }
     }
 
     public boolean collidesWith(Player p) {
         // Hier wird eine einfache Rechteck-Kollision geprüft
         return (this.lx + this.width > p.x && this.x < p.x + p.getWidth()) &&
-                (this.ly + this.height > p.y && this.y < p.y + p.getHeight()) ||
+                    (this.ly + this.height > p.y && this.y < p.y + p.getHeight()) ||
 
                 (this.lx1 + this.width > p.x && this.lx1 < p.x + p.getWidth()) &&
                         (this.ly1 + this.height > p.y && this.ly1 < p.y + p.getHeight()) ||

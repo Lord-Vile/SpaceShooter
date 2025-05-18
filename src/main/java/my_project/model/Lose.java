@@ -13,9 +13,6 @@ public class Lose extends GraphicalObject {
 
     @Override
     public void draw(DrawTool drawTool){
-        drawTool.drawFilledRectangle(50, 100, 650, 200);
-        drawTool.setCurrentColor(Color.RED);
         drawTool.drawText(70, 120, "YOU DIED");//Level 1 Button
-
     }
 }

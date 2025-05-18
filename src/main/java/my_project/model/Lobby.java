@@ -7,8 +7,15 @@ import my_project.Config;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 public class Lobby extends GraphicalObject {
+
+    public static boolean level1 = false;
+    public static boolean level2 = false;
+    public static boolean level3 = false;
+    public static boolean level4 = false;
+    public static boolean level5 = false;
 
     public Lobby() {
     }
@@ -38,11 +45,9 @@ public class Lobby extends GraphicalObject {
         drawTool.drawFilledRectangle(335, 530, 150, 150);
         drawTool.setCurrentColor(Color.BLACK);
         drawTool.drawText(370, 600, "BOSS LEVEL");//Level 5 (BOSS LEVEL) Button
-
-
-
-
-
     }
 
+  public void keyPressed(KeyEvent e){
+
+  }
 }
