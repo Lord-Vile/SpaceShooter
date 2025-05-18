@@ -15,7 +15,7 @@ public class BossLevel extends Enemies {
     protected boolean hoverUp;
     protected int level = 1;
     public double hp = 1000; // HP der Gegner
-    private double x = 1000;
+    private double x = 300;
     private double y = 50;
     private double gehtBis = 600;
     public boolean tot = false;
@@ -91,7 +91,7 @@ public class BossLevel extends Enemies {
 */
 @Override
 public void draw(DrawTool drawTool) {
-    if (time == 5 && hp > 0) {
+    if (hp > 0) {
         drawTool.drawImage(getMyImage(), this.x, this.y);
     }
 
@@ -164,11 +164,6 @@ public void draw(DrawTool drawTool) {
         if (tot) {
             System.out.println("DU HAST DEN BOSS BESIEGT");
         }
-
-
-
-
-
 
         if (this.x > gehtBis){
             this.x = this.x - 150*dt;

@@ -29,10 +29,7 @@ public class ProgramController {
     private Lobby lobby;
     private Lose loose;
     private Enemies[] e1;
-    private Enemies[] e2;
-    private Enemies[] e3;
-    private Enemies[] e4;
-    private Enemies[] e5;
+    private BossLevel boss;
     private int currentScene;
     Enemies[] enemies;
     private boolean spawnEnemies = false;
@@ -88,6 +85,10 @@ public class ProgramController {
         viewController.draw(p1,1);
         viewController.register(p1,1);
 
+        boss = new BossLevel(100);
+        viewController.draw(boss,1);
+        viewController.register(boss,1);
+
         this.e1 = new Enemies[5];
 
         for (int i = 0; i < 5; i++) {
@@ -95,6 +96,8 @@ public class ProgramController {
             viewController.draw(e1[i],1);
             viewController.register(e1[i],1);
         }
+
+
 
 
         // Endbildschirm (Szene 2)
