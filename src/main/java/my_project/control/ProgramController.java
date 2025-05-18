@@ -181,6 +181,8 @@ public class ProgramController {
                 l1.reset(); // Laser wird unabhängig vom Gegnerzustand zurückgesetzt
             }
 
+
+
             if (!enemy.tot && enemy.collidesWith(p1)) {
                 p1.takeDamage(20);
             }

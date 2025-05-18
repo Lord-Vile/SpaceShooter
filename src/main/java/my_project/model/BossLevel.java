@@ -14,8 +14,8 @@ public class BossLevel extends Enemies {
     protected double hoverY;
     protected boolean hoverUp;
     protected int level = 1;
-    public double hp = 1000; // HP der Gegner
-    private double x = 300;
+    public double hp = 10; // HP der Gegner
+    private double x = 1000;
     private double y = 50;
     private double gehtBis = 600;
     public boolean tot = false;
@@ -98,62 +98,62 @@ public void draw(DrawTool drawTool) {
     // Wenn der Boss schießt
     drawTool.setCurrentColor(new Color(123, 234, 217));
     if (shoot && hp > 0) {
-        drawTool.drawFilledRectangle(lx + 10, ly + 10 + hoverY, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 53 + hoverY, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 100 + hoverY, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 153 + hoverY, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 210 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx + 10, ly + 70 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx + 10, ly + 200 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx + 10, ly + 300 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx + 10, ly + 400 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx + 10, ly + 530 + hoverY, 20, 3);
     }
     if (shoot1 && hp > 0) {
-        drawTool.drawFilledRectangle(lx + 10, ly + 10 + hoverY, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 53 + hoverY, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 100 + hoverY, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 153 + hoverY, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 210 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx1 + 10, ly + 50 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx1 + 10, ly + 150 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx1 + 10, ly + 250 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx1 + 10, ly + 350 + hoverY, 20, 3);
+        drawTool.drawFilledRectangle(lx1 + 10, ly + 450 + hoverY, 20, 3);
     }
     if (shoot2 && hp > 0) {
-        drawTool.drawFilledRectangle(lx + 10, ly + 10 + hoverY*3, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 53 + hoverY*3, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 100 + hoverY*3, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 153 + hoverY*3, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 210 + hoverY*3, 20, 3);
+        drawTool.drawFilledRectangle(lx2 + 10, ly + 100 + hoverY*3, 20, 3);
+        drawTool.drawFilledRectangle(lx2 + 10, ly + 170 + hoverY*3, 20, 3);
+        drawTool.drawFilledRectangle(lx2 + 10, ly + 280 + hoverY*3, 20, 3);
+        drawTool.drawFilledRectangle(lx2 + 10, ly + 393 + hoverY*3, 20, 3);
+        drawTool.drawFilledRectangle(lx2 + 10, ly + 500 + hoverY*3, 20, 3);
     }
     if (shoot3 && hp > 0) {
-        drawTool.drawFilledRectangle(lx + 10, ly + 10 + hoverY*2, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 53 + hoverY*2, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 100 + hoverY*2, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 153 + hoverY*2, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 210 + hoverY*2, 20, 3);
+        drawTool.drawFilledRectangle(lx3 + 10, ly + 70 + hoverY*2, 20, 3);
+        drawTool.drawFilledRectangle(lx3 + 10, ly + 200 + hoverY*2, 20, 3);
+        drawTool.drawFilledRectangle(lx3 + 10, ly + 300 + hoverY*2, 20, 3);
+        drawTool.drawFilledRectangle(lx3 + 10, ly + 400 + hoverY*2, 20, 3);
+        drawTool.drawFilledRectangle(lx3 + 10, ly + 530 + hoverY*2, 20, 3);
     }
     if (shoot4 && hp > 0) {
-        drawTool.drawFilledRectangle(lx + 10, ly + 10 + hoverY*5, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 53 + hoverY*5, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 100 + hoverY*5, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 153 + hoverY*5, 20, 3);
-        drawTool.drawFilledRectangle(lx + 10, ly + 210 + hoverY*5, 20, 3);
+        drawTool.drawFilledRectangle(lx4 + 10, ly + 50 + hoverY*5, 20, 3);
+        drawTool.drawFilledRectangle(lx4 + 10, ly + 150 + hoverY*5, 20, 3);
+        drawTool.drawFilledRectangle(lx4 + 10, ly + 250 + hoverY*5, 20, 3);
+        drawTool.drawFilledRectangle(lx4 + 10, ly + 350 + hoverY*5, 20, 3);
+        drawTool.drawFilledRectangle(lx4 + 10, ly + 530 + hoverY*5, 20, 3);
     }
     if (shoot5 && hp > 0) {
         int timer = 3;
         if (timer > 0) {
 
-            drawTool.drawFilledRectangle(lx + 10, ly + 10 + hoverY, 30 + lx5*2, 3);
-            drawTool.drawFilledRectangle(lx + 10, ly + 53 + hoverY, 30 + lx5*2, 3);
-            drawTool.drawFilledRectangle(lx + 10, ly + 100 + hoverY, 30 + lx5*2, 3);
-            drawTool.drawFilledRectangle(lx + 10, ly + 153 + hoverY, 30 + lx5*2, 3);
-            drawTool.drawFilledRectangle(lx + 10, ly + 210 + hoverY, 30 + lx5*2, 3);
+            drawTool.drawFilledRectangle(lx5 + 10, ly + 50 + hoverY, 30 + lx5*2, 3);
+            drawTool.drawFilledRectangle(lx5 + 10, ly + 200 + hoverY, 30 + lx5*2, 3);
+            drawTool.drawFilledRectangle(lx5 + 10, ly + 300 + hoverY, 30 + lx5*2, 3);
+            drawTool.drawFilledRectangle(lx5 + 10, ly + 400 + hoverY, 30 + lx5*2, 3);
+            drawTool.drawFilledRectangle(lx5 + 10, ly + 530 + hoverY, 30 + lx5*2, 3);
         }
     }
     if (shoot6 && hp > 0) {
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 13 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 33 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 53 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 73 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 100 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 120 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 153 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 173 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 210 + hoverY*2, 15, 2);
-        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 230 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 50 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 70 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 200 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 220 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 300 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 320 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 400 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 420 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 500 + hoverY*2, 15, 2);
+        drawTool.drawFilledRectangle(lx6 + 10, ly6 + 520 + hoverY*2, 15, 2);
     }
 }
 
@@ -165,9 +165,27 @@ public void draw(DrawTool drawTool) {
             System.out.println("DU HAST DEN BOSS BESIEGT");
         }
 
+        if (hp <= 0 && !tot) {
+            this.x = 2000;  // Wegschieben
+            this.tot = true;
+        }
+
+
         if (this.x > gehtBis){
             this.x = this.x - 150*dt;
         }
+
+
+        if (hoverUp) {
+            hoverY = hoverY - 25 * dt;
+            //this.y = hoverY;
+            if (hoverY < -15) hoverUp = false;
+        } else {
+            hoverY = hoverY + 25 * dt;
+            //this.y = hoverY;
+            if (hoverY > 15) hoverUp = true;
+        }
+
 
         laserCooldown -= dt;
 
