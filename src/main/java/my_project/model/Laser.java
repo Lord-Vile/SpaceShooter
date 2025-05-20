@@ -229,6 +229,8 @@ public class Laser extends GraphicalObject {
                 (this.y5 + this.height > enemy.y && this.y5 < enemy.y + enemy.getHeight()) ||
 
                 (this.x6 + this.width > enemy.x && this.x6 < enemy.x + enemy.getWidth()) &&
-                (this.y6 + this.height > enemy.y && this.y6 < enemy.y + enemy.getHeight());
-    }
+                (this.y6 + this.height > enemy.y && this.y6 < enemy.y + enemy.getHeight()) ; //||
+
+        }
 }
+

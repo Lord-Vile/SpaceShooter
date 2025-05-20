@@ -185,15 +185,20 @@ public class ProgramController {
             if (!enemy.tot && enemy.collidesWith(p1)) {
                 p1.takeDamage(20);
             }
+
         }
-        if (boss.collidesWith(p1)) {
-            p1.takeDamage(20);
-        }
-        if (boss.collidesWith(l1)) {
+
+
+        if (l1.collidesWith(boss)) {
             if (!boss.tot) {
                 boss.takeDamage(50);
-                l1.reset();
             }
+            l1.reset();
         }
+
+        if (!boss.tot && boss.collidesWith(p1)) {
+            p1.takeDamage(20);
+        }
+
     }
 }

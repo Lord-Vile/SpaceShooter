@@ -319,31 +319,30 @@ public void draw(DrawTool drawTool) {
         }
     }
 
-    public boolean collidesWith(Player p, Laser l) {
+    public boolean collidesWith(Player p) {
         // Hier wird eine einfache Rechteck-Kollision geprüft
-        return (this.lx + this.width > p.x/2 && this.lx < p.x/2 + p.getWidth()) &&
-                (this.ly + this.height > p.y && this.ly < p.y + 10) ||
+        return (this.lx + this.width > p.x && this.lx < p.x + p.getWidth()) &&
+                (this.ly + this.height > p.y + 20 && this.ly < p.y + 20) ||
 
-                (this.lx1 + this.width > p.x/2 && this.lx1 < p.x - 30 + p.getWidth()) &&
-                        (this.ly1 + this.height > p.y && this.ly1 < p.y + 10) ||
+                (this.lx1 + this.width > p.x && this.lx1 < p.x + p.getWidth()) &&
+                        (this.ly1 + this.height > p.y + 20 && this.ly1 < p.y + 20) ||
 
-                (this.lx2 + this.width > p.x/2 && this.lx2 < p.x/2 + p.getWidth()) &&
-                        (this.ly2 + this.height > p.y && this.ly2 < p.y + 10) ||
+                (this.lx2 + this.width > p.x && this.lx2 < p.x + p.getWidth()) &&
+                        (this.ly2 + this.height > p.y + 20 && this.ly2 < p.y + 20) ||
 
-                (this.lx3 + this.width > p.x/2 && this.lx3 < p.x/2 + p.getWidth()) &&
-                        (this.ly3 + this.height > p.y && this.ly3 < p.y + 10) ||
+                (this.lx3 + this.width > p.x && this.lx3 < p.x + p.getWidth()) &&
+                        (this.ly3 + this.height > p.y + 20 && this.ly3 < p.y + 20) ||
 
-                (this.lx4 + this.width > p.x/2 && this.lx4 < p.x/2 + p.getWidth()) &&
-                        (this.ly4 + this.height > p.y && this.ly4 < p.y + 10) ||
+                (this.lx4 + this.width > p.x && this.lx4 < p.x + p.getWidth()) &&
+                        (this.ly4 + this.height > p.y + 20 && this.ly4 < p.y + 20) ||
 
-                (this.lx5 + this.width > p.x/2 && this.lx5 < p.x/2 + p.getWidth()) &&
-                        (this.ly5 + this.height > p.y && this.ly5 < p.y + 10) ||
+                (this.lx5 + this.width > p.x && this.lx5 < p.x + p.getWidth()) &&
+                        (this.ly5 + this.height > p.y + 20 && this.ly5 < p.y + 20) ||
 
-                (this.lx6 + this.width > p.x/2 && this.lx6 < p.x/2 + p.getWidth()) &&
-                        (this.ly6 + this.height > p.y && this.ly6 < p.y + 10) ||
+                (this.lx6 + this.width > p.x && this.lx6 < p.x + p.getWidth()) &&
+                        (this.ly6 + this.height > p.y + 20 && this.ly6 < p.y + 20);
 
-                (this.x + l.width > l.x / 2 && this.x < l.x / 2 + l.getWidth()) &&
-                        (this.y + l.height > l.y && this.y < l.y + 10);
+
 
     }
 
